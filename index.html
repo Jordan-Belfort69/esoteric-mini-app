@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Telegram Mini Apps Vanilla JS Sample App</title>
+    <style>
+        body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f1115;
+  color: #fff;
+}
+
+#app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px 16px 72px;
+  box-sizing: border-box;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.profile-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #262b35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.profile-username {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.tier-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #1f2937;
+}
+
+.card {
+  background: #111827;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 0;
+  color: #e5e7eb;
+}
+
+.card-row span:last-child {
+  color: #f9fafb;
+  font-weight: 500;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 8px 12px 12px;
+  display: flex;
+  gap: 8px;
+  background: #020617ee;
+  backdrop-filter: blur(10px);
+}
+
+.nav-btn {
+  flex: 1;
+  border-radius: 999px;
+  border: none;
+  padding: 10px 0;
+  font-size: 13px;
+  color: #e5e7eb;
+  background: #111827;
+}
+
+.nav-btn-active {
+  background: #1d4ed8;
+  color: #f9fafb;
+  font-weight: 600;
+}
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <header class="profile-header">
+      <div class="profile-main">
+        <div class="avatar-circle">J</div>
+        <div class="profile-info">
+          <div class="profile-name" id="user-name">—</div>
+          <div class="profile-username" id="user-username">@username</div>
+        </div>
+      </div>
+      <div class="tier-pill" id="user-tier">—</div>
+    </header>
+
+    <section class="card">
+      <div class="card-title">Подписка</div>
+      <div class="card-row">
+        <span>Статус</span>
+        <span id="sub-status">—</span>
+      </div>
+      <div class="card-row">
+        <span>Действует до</span>
+        <span id="sub-end">—</span>
+      </div>
+      <div class="card-row">
+        <span>Осталось дней</span>
+        <span id="sub-days-left">—</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Сегодня доступно</div>
+      <div class="card-row">
+        <span>Ритуалы</span>
+        <span id="limit-ritual">—</span>
+      </div>
+      <div class="card-row">
+        <span>Таро</span>
+        <span id="limit-tarot">—</span>
+      </div>
+      <div class="card-row">
+        <span>Гороскопы</span>
+        <span id="limit-horoscope">—</span>
+      </div>
+      <div class="card-row">
+        <span>Недельные планы</span>
+        <span id="limit-week">—</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Реферальная программа</div>
+      <div class="card-row">
+        <span>Твой код</span>
+        <span id="ref-code">—</span>
+      </div>
+      <div class="card-row">
+        <span>Приглашено</span>
+        <span id="ref-count">—</span>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn nav-btn-active">Профиль</button>
+      <button class="nav-btn">Таро</button>
+      <button class="nav-btn">Ритуалы</button>
+      <button class="nav-btn">Подписка</button>
+    </nav>
+  </div>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
