@@ -150,8 +150,10 @@ function initTarotControls() {
       deck: tarotState.deck,
     };
 
-    tg.sendData(JSON.stringify(payload));
-    tg.close(); // закрываем мини‑апп, пользователь вернётся в чат с ботом
+    console.log("SEND DATA:", payload); // один лог
+    tg.sendData(JSON.stringify(payload)); // один sendData
+    tg.close();
   });
 }
+
 
