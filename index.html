@@ -274,16 +274,36 @@
 
     <!-- ===== СЕКЦИЯ: ЭКРАН РЕФЕРАЛЬНОЙ ПРОГРАММЫ ===== -->
     <section class="card" id="profile-ref" style="display:none;">
-      <div class="card-title">Реферальная программа</div>
-      <div class="card-row">
-        <span>Твой код</span>
-        <span id="ref-code">—</span>
+      <div class="ref-hero">
+        <div class="ref-emoji">🧙‍♀️</div>
+        <div class="ref-title">Посоветуете Esoteric AI подругам?</div>
+        <div class="ref-subtitle">
+          Приглашай друзей по своей ссылке и получи подписки в подарок!
+        </div>
       </div>
-      <div class="card-row">
-        <span>Приглашено</span>
-        <span id="ref-count">—</span>
+
+      <div class="ref-block">
+        <div class="ref-label">Ваша ссылка</div>
+        <div class="ref-link-row">
+          <input
+            class="ref-link-input"
+            id="ref-link-input"
+            type="text"
+            readonly
+            value="https://t.me/ai_esotericbot?start=ref_example"
+          />
+          <button class="ref-copy-btn" id="ref-copy-btn">Копировать</button>
+        </div>
+      </div>
+
+      <div class="ref-block">
+        <div class="ref-label">Ваши приглашенные друзья</div>
+        <div class="ref-friends-box" id="ref-friends-box">
+          Пока нет приглашенных друзей
+        </div>
       </div>
     </section>
+
 
     <!-- ===== СЕКЦИЯ: ВКЛАДКА "ТАРО" ===== -->
     <section class="card tarot-section" id="tarot-section" style="display:none;">

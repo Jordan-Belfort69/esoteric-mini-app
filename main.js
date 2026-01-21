@@ -128,18 +128,44 @@ function initTarotControls() {
 } // ← этой скобки не хватало
 
 function initReferralSection() {
-  const refLink = document.getElementById('profile-ref-link');
-  const refCard = document.getElementById('profile-ref');
+  const refLinkCard = document.getElementById('profile-ref-link');
+  const refScreen = document.getElementById('profile-ref');
   const profileCards = document.querySelectorAll(
     '#profile-subscription, #profile-limits, #profile-ref-link'
   );
+  const tarotSection = document.getElementById('tarot-section');
+  const bottomNav = document.querySelector('.bottom-nav');
 
-  if (!refLink || !refCard) return;
+  if (!refLinkCard || !refScreen || !bottomNav) return;
 
-  refLink.addEventListener('click', () => {
+  // создаём кнопку "Пригласить друзей"
+  const inviteBtn = document.createElement('button');
+  inviteBtn.className = 'primary-btn';
+  inviteBtn.id = 'ref-invite-btn';
+  inviteBtn.textContent = 'Пригласить друзей';
+  inviteBtn.style.position = 'fixed';
+  inviteBtn.style.left = '16px';
+  inviteBtn.style.right = '16px';
+  inviteBtn.style.bottom = '16px';
+
+  inviteBtn.addEventListener('click', () => {
+    // TODO: сюда подвяжешь бекенд, который откроет sendMessage / deeplink
+    console.log('Invite friends clicked');
+  });
+
+  refLinkCard.addEventListener('click', () => {
+    // скрываем профильные карточки и Таро
     profileCards.forEach(c => (c.style.display = 'none'));
-    refCard.style.display = 'block';
+    if (tarotSection) tarotSection.style.display = 'none';
+
+    // показываем реферальный экран
+    refScreen.style.display = 'block';
+
+    // прячем нижнее меню, показываем кнопку
+    bottomNav.style.display = 'none';
+    document.body.appendChild(inviteBtn);
   });
 }
+
 
 
