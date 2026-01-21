@@ -116,6 +116,63 @@
   color: #f9fafb;
   font-weight: 600;
 }
+
+.tarot-section {
+  margin-top: 12px;
+}
+
+.tarot-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.tarot-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 10px 0 4px;
+}
+
+.pill-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.pill-btn {
+  border-radius: 999px;
+  border: 1px solid #374151;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+.pill-btn-active {
+  background: #1d4ed8;
+  border-color: #2563eb;
+  color: #f9fafb;
+}
+
+.primary-btn {
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 999px;
+  border: none;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #f9fafb;
+}
+
+.hint-text {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.4;
+}
     </style>
 </head>
 
@@ -183,26 +240,18 @@
 
     <!-- Секция Таро (вкладка) -->
     <section class="card tarot-section" id="tarot-section" style="display:none;">
-      <div class="card-title">Выбор расклада</div>
+      <div class="tarot-title">Выбор расклада</div>
 
-      <div class="card-subtitle">Количество карт</div>
+      <div class="tarot-subtitle">Количество карт</div>
       <div class="pill-row">
-        <button class="pill-btn pill-btn-active" data-cards="1" id="cards-1">
-          🃏 1 карта
-        </button>
-        <button class="pill-btn" data-cards="3" id="cards-3">
-          🔮 3 карты
-        </button>
+        <button class="pill-btn pill-btn-active" data-cards="1" id="cards-1">🃏 1 карта</button>
+        <button class="pill-btn" data-cards="3" id="cards-3">🔮 3 карты</button>
       </div>
 
-      <div class="card-subtitle">Колода</div>
+      <div class="tarot-subtitle">Колода</div>
       <div class="pill-row">
-        <button class="pill-btn pill-btn-active" data-deck="rider" id="deck-rider">
-          🧿 Райдер‑Уэйт
-        </button>
-        <button class="pill-btn" data-deck="lenormand" id="deck-lenormand">
-          🔮 Ленорман
-        </button>
+        <button class="pill-btn pill-btn-active" data-deck="rider" id="deck-rider">🧿 Райдер‑Уэйт</button>
+        <button class="pill-btn" data-deck="lenormand" id="deck-lenormand">🔮 Ленорман</button>
       </div>
 
       <button class="primary-btn" id="tarot-ask-btn">
@@ -210,10 +259,10 @@
       </button>
 
       <p class="hint-text">
-        Сначала выбери формат расклада, затем нажми кнопку — бот попросит
-        написать вопрос и сделает расклад по выбранным параметрам.
+        Сначала выбери формат расклада, затем нажми кнопку — бот попросит написать вопрос и сделает расклад по выбранным параметрам.
       </p>
     </section>
+
 
     <nav class="bottom-nav">
       <button class="nav-btn nav-btn-active" data-tab="profile">Профиль</button>
