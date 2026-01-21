@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadProfile();
   initTabs();
   initTarotControls();
+  initReferralSection();
 });
 
 let tarotState = {
@@ -125,4 +126,21 @@ function initTarotControls() {
     tg.close();
   });
 } // ← этой скобки не хватало
+
+function initReferralSection() {
+  const btn = document.getElementById('open-referral-btn');
+  const refCard = document.getElementById('profile-ref');
+  const profileCards = document.querySelectorAll(
+    '#profile-subscription, #profile-limits'
+  );
+
+  if (!btn || !refCard) return;
+
+  btn.addEventListener('click', () => {
+    // скрываем обычные профильные карточки
+    profileCards.forEach(c => (c.style.display = 'none'));
+    // показываем реферальный экран
+    refCard.style.display = 'block';
+  });
+}
 
