@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabs();
   initTarotControls();
   initReferralSection();
+  initSubsControls();
 });
 
 let tarotState = {
@@ -59,24 +60,35 @@ async function loadProfile() {
 }
 
 function switchTab(tab) {
-  const tarotSection = document.getElementById("tarot-section");
-  const profileCards = document.querySelectorAll(
-    "#profile-subscription, #profile-limits, #profile-ref"
+  const tarotSection = document.getElementById('tarot-section');
+  const subsSection = document.getElementById('subs-section');
+  const profileBlocks = document.querySelectorAll(
+    '#profile-subscription, #profile-limits, #profile-ref-link, #profile-ref'
   );
+  const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
 
-  const navButtons = document.querySelectorAll(".bottom-nav .nav-btn");
   navButtons.forEach(btn => {
-    const t = btn.getAttribute("data-tab");
+    const t = btn.getAttribute('data-tab');
     if (!t) return;
-    btn.classList.toggle("nav-btn-active", t === tab);
+    btn.classList.toggle('nav-btn-active', t === tab);
   });
 
-  if (tab === "tarot") {
-    tarotSection.style.display = "block";
-    profileCards.forEach(c => (c.style.display = "none"));
+  if (tab === 'tarot') {
+    if (tarotSection) tarotSection.style.display = 'block';
+    if (subsSection) subsSection.style.display = 'none';
+    profileBlocks.forEach(c => (c.style.display = 'none'));
+  } else if (tab === 'subs') {
+    if (subsSection) subsSection.style.display = 'block';
+    if (tarotSection) tarotSection.style.display = 'none';
+    profileBlocks.forEach(c => (c.style.display = 'none'));
   } else {
-    tarotSection.style.display = "none";
-    profileCards.forEach(c => (c.style.display = "block"));
+    // профиль
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (subsSection) subsSection.style.display = 'none';
+    profileBlocks.forEach(c => (c.style.display = 'block'));
+    // реф-экран можно дополнительно скрыть, если нужно
+    const refScreen = document.getElementById('profile-ref');
+    if (refScreen) refScreen.style.display = 'none';
   }
 }
 
@@ -170,5 +182,22 @@ function initReferralSection() {
   });
 }
 
+function initSubsControls() {
+  const proBtn = document.getElementById('subs-btn-pro');
+  const mysticBtn = document.getElementById('subs-btn-mystic');
+
+  if (proBtn) {
+    proBtn.addEventListener('click', () => {
+      console.log('PRO clicked');
+      // TODO: здесь потом вызовешь бекенд/оплату
+    });
+  }
+
+  if (mysticBtn) {
+    mysticBtn.addEventListener('click', () => {
+      console.log('Mystic clicked');
+    });
+  }
+}
 
 
