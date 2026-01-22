@@ -287,24 +287,19 @@ body {
 }
 
 /* Кнопка "Купить подписку" — зелёный акцент */
-section.card.card-link.card-link-buy {
-  background: transparent !important;
-}
-
-section.card.card-link.card-link-buy .card-link-inner {
-  background: #065f46 !important;
+.card-link-buy .card-link-inner {
+  background: #065f46;        /* тёмно‑зелёный фон */
   border-radius: 12px;
 }
 
-section.card.card-link.card-link-buy .card-link-text {
-  color: #ecfdf5 !important;
+.card-link-buy .card-link-text {
+  color: #ecfdf5;             /* светлый текст */
 }
 
-section.card.card-link.card-link-buy .card-link-emoji {
-  color: #bbf7d0 !important;
+.card-link-buy .card-link-emoji {
+  color: #bbf7d0;
 }
 
-section.card.card-link.card-link-buy .card-link-arrow {
-  color: #a7f3d0 !important;
+.card-link-buy .card-link-arrow {
+  color: #a7f3d0;
 }
-
