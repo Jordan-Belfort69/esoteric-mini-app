@@ -66,11 +66,19 @@ async function loadProfile() {
 }
 
 function switchTab(tab) {
+  const profileHeader = document.querySelector('.profile-header');
   const tarotSection = document.getElementById('tarot-section');
   const subsSection = document.getElementById('subs-section');
-const profileBlocks = document.querySelectorAll(
-  '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, #task1-details, #task2-details, #profile-help'
-);
+
+  const profileBlocks = document.querySelectorAll(
+    '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
+    '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
+    '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
+    '#profile-ref, #profile-history, #profile-tasks, #profile-task1-card, ' +
+    '#profile-task2-card, #task1-details, #task2-details, ' +
+    '#profile-help, #profile-help-contact'
+  );
+
   const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
 
   navButtons.forEach(btn => {
@@ -80,27 +88,38 @@ const profileBlocks = document.querySelectorAll(
   });
 
   if (tab === 'tarot') {
-    if (tarotSection) tarotSection.style.display = 'block';
+    if (profileHeader) profileHeader.style.display = 'none';
+    profileBlocks.forEach(c => (c.style.display = 'none'));
+
     if (subsSection) subsSection.style.display = 'none';
-    profileBlocks.forEach(c => (c.style.display = 'none'));
+    if (tarotSection) tarotSection.style.display = 'block';
   } else if (tab === 'subs') {
-    if (subsSection) subsSection.style.display = 'block';
-    if (tarotSection) tarotSection.style.display = 'none';
+    if (profileHeader) profileHeader.style.display = 'none';
     profileBlocks.forEach(c => (c.style.display = 'none'));
+
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (subsSection) subsSection.style.display = 'block';
   } else {
-    // профиль
+    // вкладка "Профиль"
+    if (profileHeader) profileHeader.style.display = 'flex';
     if (tarotSection) tarotSection.style.display = 'none';
     if (subsSection) subsSection.style.display = 'none';
 
     document.querySelectorAll(
-      '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-feedback-link, #profile-news-link, #profile-help-link'
+      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
+      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
+      '#profile-feedback-link, #profile-news-link, #profile-help-link'
     ).forEach(c => (c.style.display = 'block'));
 
-    ['profile-ref', 'profile-history', 'profile-tasks', 'profile-task1-card', 'profile-task2-card', 'task1-details', 'task2-details', 'profile-help']
-      .forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = 'none';
-      });
+    [
+      'profile-ref', 'profile-history', 'profile-tasks',
+      'profile-task1-card', 'profile-task2-card',
+      'task1-details', 'task2-details',
+      'profile-help', 'profile-help-contact'
+    ].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
   }
 }
 
