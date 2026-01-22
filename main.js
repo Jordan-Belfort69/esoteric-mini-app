@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFeedbackLink();
   initNewsLink();
   initHelpSection();
+  initSupportLink();
 });
 
 let tarotState = {
@@ -74,8 +75,8 @@ function switchTab(tab) {
     '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
     '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
     '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
-    '#profile-ref, #profile-history, #profile-tasks, #profile-task1-card, ' +
-    '#profile-task2-card, #task1-details, #task2-details, ' +
+    '#profile-support-link, #profile-ref, #profile-history, #profile-tasks, ' +
+    '#profile-task1-card, #profile-task2-card, #task1-details, #task2-details, ' +
     '#profile-help, #profile-help-contact'
   );
 
@@ -108,7 +109,8 @@ function switchTab(tab) {
     document.querySelectorAll(
       '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
       '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
-      '#profile-feedback-link, #profile-news-link, #profile-help-link'
+      '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
+      '#profile-support-link'
     ).forEach(c => (c.style.display = 'block'));
 
     [
@@ -434,4 +436,19 @@ function initHelpSection() {
   }
 }
 
+function initSupportLink() {
+  const supportCard = document.getElementById('profile-support-link');
+  if (!supportCard) return;
 
+  supportCard.addEventListener('click', () => {
+    const url = 'https://t.me/j_belfort69'; // сюда линк/юзернейм саппорта
+
+    console.log('Support clicked, open:', url);
+
+    if (tg && typeof tg.openTelegramLink === 'function') {
+      tg.openTelegramLink(url);
+    } else {
+      window.open(url, '_blank');
+    }
+  });
+}
