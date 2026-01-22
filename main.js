@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initReferralSection();
   initSubsControls();
   initBuySubButton();
+  initHistorySection();
 });
 
 let tarotState = {
@@ -64,7 +65,7 @@ function switchTab(tab) {
   const tarotSection = document.getElementById('tarot-section');
   const subsSection = document.getElementById('subs-section');
   const profileBlocks = document.querySelectorAll(
-    '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-ref-link, #profile-ref'
+    '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-ref-link, #profile-ref, #profile-history'
   );
   const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
 
@@ -191,3 +192,32 @@ function initBuySubButton() {
   });
 }
 
+function initHistorySection() {
+  const historyLink = document.getElementById('profile-history-link');
+  const historyScreen = document.getElementById('profile-history');
+  const profileCards = document.querySelectorAll(
+    '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-ref-link, #profile-ref'
+  );
+  const tarotSection = document.getElementById('tarot-section');
+  const subsSection = document.getElementById('subs-section');
+
+  if (!historyLink || !historyScreen) return;
+
+  historyLink.addEventListener('click', () => {
+    // прячем остальные карточки профиля
+    profileCards.forEach(c => (c.style.display = 'none'));
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (subsSection) subsSection.style.display = 'none';
+
+    // показываем историю
+    historyScreen.style.display = 'block';
+  });
+
+  // Пока «Прочитать полностью» просто показывает alert-заглушку
+  const readButtons = historyScreen.querySelectorAll('.history-read-btn');
+  readButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      alert('Здесь будет полный текст ответа из базы (заглушка).');
+    });
+  });
+}

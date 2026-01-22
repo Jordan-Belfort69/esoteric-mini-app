@@ -374,6 +374,67 @@
 .card-link-buy .card-link-arrow {
   color: #a7f3d0;
 }
+
+/* ===== ИСТОРИЯ ЗАПРОСОВ ===== */
+.history-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.history-item {
+  background: #020617;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.history-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.history-type {
+  font-weight: 600;
+}
+
+.history-date {
+  font-variant-numeric: tabular-nums;
+}
+
+.history-question {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #e5e7eb;
+}
+
+.history-answer-preview {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.history-read-btn {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 0;
+  font-size: 12px;
+  font-weight: 500;
+  background: #1d4ed8;
+  color: #f9fafb;
+  cursor: pointer;
+}
+
+.history-read-btn:active {
+  transform: translateY(1px);
+}
   </style>
 </head>
 
@@ -439,6 +500,15 @@
       </div>
     </section>
 
+        <!-- КНОПКА: ИСТОРИЯ ЗАПРОСОВ -->
+    <section class="card card-link" id="profile-history-link">
+      <div class="card-link-inner">
+        <span class="card-link-emoji">📜</span>
+        <span class="card-link-text">История запросов</span>
+        <span class="card-link-arrow">›</span>
+      </div>
+    </section>
+
     <!-- ===== СЕКЦИЯ: КАРТОЧКА-ССЫЛКА "РЕФЕРАЛКА" ===== -->
     <section class="card card-link" id="profile-ref-link">
       <div class="card-link-inner">
@@ -482,6 +552,99 @@
       <button class="primary-btn" id="ref-invite-btn">
         Пригласить друзей
       </button>
+    </section>
+
+        <!-- ===== СЕКЦИЯ: ЭКРАН ИСТОРИИ ЗАПРОСОВ ===== -->
+    <section class="card" id="profile-history" style="display:none;">
+      <div class="history-title">📜 История последних запросов</div>
+
+      <!-- Один блок истории -->
+      <div class="history-item">
+        <div class="history-meta">
+          <span class="history-type">🎴 Таро</span>
+          <span class="history-date">21.01.2026 09:12</span>
+        </div>
+        <div class="history-question">
+          ❓ Что ждет меня сегодня?
+        </div>
+        <div class="history-answer-preview">
+          ✅ Шаг 1: Найдите тихое место, где вы сможете посидеть в спокойствии.
+          Закройте глаза и сделайте несколько глубоких вдохов и выдохов, 
+          сосредотачиваясь на ощущениях в теле…
+        </div>
+        <button class="history-read-btn">
+          📖 Прочитать полностью
+        </button>
+      </div>
+
+      <!-- Для теста просто продублируем 4 раза с разными заглушками -->
+      <div class="history-item">
+        <div class="history-meta">
+          <span class="history-type">🔮 Ритуал</span>
+          <span class="history-date">20.01.2026 22:03</span>
+        </div>
+        <div class="history-question">
+          ❓ Как настроиться на продуктивный день?
+        </div>
+        <div class="history-answer-preview">
+          ✅ Начните утро с простого дыхательного упражнения и короткого намерения
+          на день, чтобы сфокусировать энергию на самых важных задачах…
+        </div>
+        <button class="history-read-btn">
+          📖 Прочитать полностью
+        </button>
+      </div>
+
+      <div class="history-item">
+        <div class="history-meta">
+          <span class="history-type">🪐 Гороскоп</span>
+          <span class="history-date">20.01.2026 09:45</span>
+        </div>
+        <div class="history-question">
+          ❓ Что советуют звезды на сегодня?
+        </div>
+        <div class="history-answer-preview">
+          ✅ День подходит для мягких шагов вперед: небольшие решения, аккуратные
+          разговоры и внимание к своим ощущениям принесут заметный результат…
+        </div>
+        <button class="history-read-btn">
+          📖 Прочитать полностью
+        </button>
+      </div>
+
+      <div class="history-item">
+        <div class="history-meta">
+          <span class="history-type">🎴 Таро</span>
+          <span class="history-date">19.01.2026 18:27</span>
+        </div>
+        <div class="history-question">
+          ❓ Как лучше поступить в важном разговоре?
+        </div>
+        <div class="history-answer-preview">
+          ✅ Перед разговором уделите несколько минут тому, чтобы сформулировать
+          одно главное намерение: чего вы хотите в итоге, помимо «быть правой»…
+        </div>
+        <button class="history-read-btn">
+          📖 Прочитать полностью
+        </button>
+      </div>
+
+      <div class="history-item">
+        <div class="history-meta">
+          <span class="history-type">🔮 Ритуал</span>
+          <span class="history-date">19.01.2026 08:15</span>
+        </div>
+        <div class="history-question">
+          ❓ Как отпустить тревоги перед сном?
+        </div>
+        <div class="history-answer-preview">
+          ✅ Перед тем как лечь спать, запишите на лист бумаги все мысли, которые
+          не дают покоя, а затем сделайте небольшую дыхательную практику на выдох…
+        </div>
+        <button class="history-read-btn">
+          📖 Прочитать полностью
+        </button>
+      </div>
     </section>
 
     <!-- ===== СЕКЦИЯ: ЭКРАН ПОДПИСКИ (ВКЛАДКА "ПОДПИСКА") ===== -->
