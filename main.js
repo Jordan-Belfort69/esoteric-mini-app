@@ -119,6 +119,11 @@ function switchTab(tab) {
     if (tarotSection) tarotSection.style.display = 'none';
     if (subsSection) subsSection.style.display = 'none';
     if (ritualsSection) ritualsSection.style.display = 'block';
+
+    const tipSettings = document.getElementById('ritual-tip-settings');
+    const timeScreen = document.getElementById('ritual-tip-time-screen');
+    if (tipSettings) tipSettings.style.display = 'none';
+    if (timeScreen) timeScreen.style.display = 'none';
   } else {
     // вкладка "Профиль"
     if (profileHeader) profileHeader.style.display = 'flex';

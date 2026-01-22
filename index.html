@@ -981,6 +981,88 @@
       </div>
     </section>
 
+        <!-- ===== СЕКЦИЯ: НАСТРОЙКА "СОВЕТ ДНЯ" ===== -->
+    <section class="card" id="ritual-tip-settings" style="display:none;">
+      <div style="text-align:center; margin-bottom:12px;">
+        <div style="font-size:40px; margin-bottom:4px;">🌞</div>
+        <div class="history-title" style="margin-bottom:4px;">Совет дня</div>
+        <div class="history-answer-preview" style="margin-bottom:12px;">
+          Карта с напутствием для вдохновения и ясности каждый день. Бесплатно.
+        </div>
+      </div>
+
+      <!-- Переключатель "Совет дня" -->
+      <div class="history-item" id="ritual-tip-toggle-row">
+        <div class="help-row">
+          <div class="history-question">Совет дня</div>
+          <label class="switch">
+            <input type="checkbox" id="ritual-tip-enabled">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Блоки "Время" и "Часовой пояс" (скрыты, пока выключено) -->
+      <div id="ritual-tip-extra" style="display:none;">
+        <div class="history-item">
+          <div class="help-row">
+            <div class="history-question">Время</div>
+            <button class="help-read-btn" id="ritual-tip-time-btn">
+              Выбрать
+            </button>
+          </div>
+        </div>
+
+        <div class="history-item">
+          <div class="help-row">
+            <div class="history-question">Часовой пояс</div>
+            <div class="history-answer-preview" id="ritual-tip-tz-label">
+              Europe/Moscow
+            </div>
+          </div>
+        </div>
+
+        <div class="tasks-claim-wrapper">
+          <button class="history-read-btn" id="ritual-tip-save-btn">
+            Готово
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: ВЫБОР ВРЕМЕНИ ДЛЯ "СОВЕТ ДНЯ" ===== -->
+    <section class="card" id="ritual-tip-time-screen" style="display:none;">
+      <div style="text-align:center; margin-bottom:12px;">
+        <div style="font-size:40px; margin-bottom:4px;">🌞</div>
+        <div class="history-title" style="margin-bottom:4px;">Совет дня</div>
+        <div class="history-answer-preview">
+          Выберите удобное время для напоминания.
+        </div>
+      </div>
+
+      <div class="history-title" style="margin-top:12px;">ВЕЧЕРОМ</div>
+      <div class="history-item ritual-time-option" data-time="18:00–19:00">
+        <div class="history-question">18:00 – 19:00</div>
+      </div>
+      <div class="history-item ritual-time-option" data-time="19:00–20:00">
+        <div class="history-question">19:00 – 20:00</div>
+      </div>
+      <div class="history-item ritual-time-option" data-time="20:00–21:00">
+        <div class="history-question">20:00 – 21:00</div>
+      </div>
+
+      <div class="history-title" style="margin-top:12px;">УТРОМ</div>
+      <div class="history-item ritual-time-option" data-time="07:00–08:00">
+        <div class="history-question">07:00 – 08:00</div>
+      </div>
+      <div class="history-item ritual-time-option" data-time="08:00–09:00">
+        <div class="history-question">08:00 – 09:00</div>
+      </div>
+      <div class="history-item ritual-time-option" data-time="09:00–10:00">
+        <div class="history-question">09:00 – 10:00</div>
+      </div>
+    </section>
+
     <!-- ===== СЕКЦИЯ: ЭКРАН ПОДПИСКИ (ВКЛАДКА "ПОДПИСКА") ===== -->
     <section id="subs-section" style="display:none;">
 
@@ -1064,102 +1146,18 @@
       </p>
     </section>
 
-        <!-- ===== СЕКЦИЯ: ВКЛАДКА "РИТУАЛЫ" ===== -->
-    <section class="card rituals-section" id="rituals-section" style="display:none;">
-      <div class="tarot-title">Ритуалы</div>
-
-          <!-- ===== СЕКЦИЯ: НАСТРОЙКА "СОВЕТ ДНЯ" ===== -->
-    <section class="card" id="ritual-tip-settings" style="display:none;">
-      <div style="text-align:center; margin-bottom:12px;">
-        <div style="font-size:40px; margin-bottom:4px;">🌞</div>
-        <div class="history-title" style="margin-bottom:4px;">Совет дня</div>
-        <div class="history-answer-preview" style="margin-bottom:12px;">
-          Карта с напутствием для вдохновения и ясности каждый день. Бесплатно.
-        </div>
+    <!-- ===== СЕКЦИЯ: ВКЛАДКА "РИТУАЛЫ" ===== -->
+    <section id="rituals-section" style="display:none;">
+      <div class="history-title" style="margin-bottom:8px;">
+        Ритуалы
       </div>
-
-          <!-- ===== СЕКЦИЯ: ВЫБОР ВРЕМЕНИ ДЛЯ "СОВЕТ ДНЯ" ===== -->
-    <section class="card" id="ritual-tip-time-screen" style="display:none;">
-      <div style="text-align:center; margin-bottom:12px;">
-        <div style="font-size:40px; margin-bottom:4px;">🌞</div>
-        <div class="history-title" style="margin-bottom:4px;">Совет дня</div>
-        <div class="history-answer-preview">
-          Выберите удобное время для напоминания.
-        </div>
-      </div>
-
-      <div class="history-title" style="margin-top:12px;">ВЕЧЕРОМ</div>
-      <div class="history-item ritual-time-option" data-time="18:00–19:00">
-        <div class="history-question">18:00 – 19:00</div>
-      </div>
-      <div class="history-item ritual-time-option" data-time="19:00–20:00">
-        <div class="history-question">19:00 – 20:00</div>
-      </div>
-      <div class="history-item ritual-time-option" data-time="20:00–21:00">
-        <div class="history-question">20:00 – 21:00</div>
-      </div>
-
-      <div class="history-title" style="margin-top:12px;">УТРОМ</div>
-      <div class="history-item ritual-time-option" data-time="07:00–08:00">
-        <div class="history-question">07:00 – 08:00</div>
-      </div>
-      <div class="history-item ritual-time-option" data-time="08:00–09:00">
-        <div class="history-question">08:00 – 09:00</div>
-      </div>
-      <div class="history-item ritual-time-option" data-time="09:00–10:00">
-        <div class="history-question">09:00 – 10:00</div>
-      </div>
-    </section>
-
-      <!-- Переключатель "Совет дня" -->
-      <div class="history-item" id="ritual-tip-toggle-row">
-        <div class="help-row">
-          <div class="history-question">Совет дня</div>
-          <label class="switch">
-            <input type="checkbox" id="ritual-tip-enabled">
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Блоки "Время" и "Часовой пояс" (скрыты, пока выключено) -->
-      <div id="ritual-tip-extra" style="display:none;">
-        <div class="history-item">
-          <div class="help-row">
-            <div class="history-question">Время</div>
-            <button class="help-read-btn" id="ritual-tip-time-btn">
-              Выбрать
-            </button>
-          </div>
-        </div>
-
-        <div class="history-item">
-          <div class="help-row">
-            <div class="history-question">Часовой пояс</div>
-            <div class="history-answer-preview" id="ritual-tip-tz-label">
-              Europe/Moscow
-            </div>
-          </div>
-        </div>
-
-        <div class="tasks-claim-wrapper">
-          <button class="history-read-btn" id="ritual-tip-save-btn">
-            Готово
-          </button>
-        </div>
-      </div>
-    </section>
 
       <!-- Кнопка настройки "Совет дня" -->
       <section class="card card-link" id="ritual-tip-link">
         <div class="card-link-inner">
           <span class="card-link-emoji">🌞</span>
-          <span class="card-link-text">
-            Совет дня
-          </span>
-          <span class="card-link-arrow" id="ritual-tip-time-label">
-            <!-- сюда подставим время, например 07:00–08:00 -->
-          </span>
+          <span class="card-link-text">Совет дня</span>
+          <span class="card-link-arrow" id="ritual-tip-time-label">›</span>
         </div>
       </section>
     </section>
