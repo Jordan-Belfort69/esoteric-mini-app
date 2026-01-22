@@ -19,11 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
   initNewsLink();
   initHelpSection();
   initSupportLink();
+  initRitualTip();
 });
 
 let tarotState = {
   cards: 1,
   deck: "rider",
+};
+
+let ritualTipState = {
+  enabled: false,
+  time: null,           // например "07:00–08:00"
+  timezone: 'Europe/Moscow'
 };
 
 function getInitData() {
@@ -74,13 +81,15 @@ function switchTab(tab) {
   const profileHeader = document.querySelector('.profile-header');
   const tarotSection = document.getElementById('tarot-section');
   const subsSection = document.getElementById('subs-section');
+  const ritualsSection = document.getElementById('rituals-section');
 
   const profileBlocks = document.querySelectorAll(
     '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
     '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
     '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
-    '#profile-support-link, #profile-ref, #profile-history, #profile-tasks, ' +
-    '#profile-task1-card, #profile-task2-card, #task1-details, #task2-details, ' +
+    '#profile-support-link, ' +
+    '#profile-ref, #profile-history, #profile-tasks, #profile-task1-card, ' +
+    '#profile-task2-card, #task1-details, #task2-details, ' +
     '#profile-help, #profile-help-contact'
   );
 
@@ -95,20 +104,27 @@ function switchTab(tab) {
   if (tab === 'tarot') {
     if (profileHeader) profileHeader.style.display = 'none';
     profileBlocks.forEach(c => (c.style.display = 'none'));
-
     if (subsSection) subsSection.style.display = 'none';
+    if (ritualsSection) ritualsSection.style.display = 'none';
     if (tarotSection) tarotSection.style.display = 'block';
   } else if (tab === 'subs') {
     if (profileHeader) profileHeader.style.display = 'none';
     profileBlocks.forEach(c => (c.style.display = 'none'));
-
     if (tarotSection) tarotSection.style.display = 'none';
+    if (ritualsSection) ritualsSection.style.display = 'none';
     if (subsSection) subsSection.style.display = 'block';
+  } else if (tab === 'rituals') {
+    if (profileHeader) profileHeader.style.display = 'none';
+    profileBlocks.forEach(c => (c.style.display = 'none'));
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (subsSection) subsSection.style.display = 'none';
+    if (ritualsSection) ritualsSection.style.display = 'block';
   } else {
     // вкладка "Профиль"
     if (profileHeader) profileHeader.style.display = 'flex';
     if (tarotSection) tarotSection.style.display = 'none';
     if (subsSection) subsSection.style.display = 'none';
+    if (ritualsSection) ritualsSection.style.display = 'none';
 
     document.querySelectorAll(
       '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
@@ -459,4 +475,120 @@ function initSupportLink() {
       window.open(url, '_blank');
     }
   });
+}
+
+function initRitualTip() {
+  const tipLink = document.getElementById('ritual-tip-link');
+  const tipTimeLabel = document.getElementById('ritual-tip-time-label');
+  const tipSettings = document.getElementById('ritual-tip-settings');
+  const tipEnabledCheckbox = document.getElementById('ritual-tip-enabled');
+  const tipExtra = document.getElementById('ritual-tip-extra');
+  const tipTimeBtn = document.getElementById('ritual-tip-time-btn');
+  const tipTzLabel = document.getElementById('ritual-tip-tz-label');
+  const tipSaveBtn = document.getElementById('ritual-tip-save-btn');
+
+  const timeScreen = document.getElementById('ritual-tip-time-screen');
+  const timeOptions = document.querySelectorAll('.ritual-time-option');
+
+  if (!tipLink || !tipSettings) return;
+
+  function updateMainTimeLabel() {
+    if (ritualTipState.enabled && ritualTipState.time) {
+      tipTimeLabel.textContent = ritualTipState.time;
+    } else {
+      tipTimeLabel.textContent = '›';
+    }
+  }
+
+  function openTipSettings() {
+    const profileHeader = document.querySelector('.profile-header');
+    const ritualsSection = document.getElementById('rituals-section');
+    const tarotSection = document.getElementById('tarot-section');
+    const subsSection = document.getElementById('subs-section');
+
+    if (profileHeader) profileHeader.style.display = 'none';
+
+    document.querySelectorAll(
+      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
+      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
+      '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
+      '#profile-support-link, #profile-ref, #profile-history, #profile-tasks, ' +
+      '#profile-task1-card, #profile-task2-card, #task1-details, #task2-details, ' +
+      '#profile-help, #profile-help-contact'
+    ).forEach(c => (c.style.display = 'none'));
+
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (subsSection) subsSection.style.display = 'none';
+    if (ritualsSection) ritualsSection.style.display = 'none';
+    if (timeScreen) timeScreen.style.display = 'none';
+
+    tipEnabledCheckbox.checked = ritualTipState.enabled;
+    tipExtra.style.display = ritualTipState.enabled ? 'block' : 'none';
+    tipTzLabel.textContent = ritualTipState.timezone;
+    tipTimeBtn.textContent = ritualTipState.time || 'Выбрать';
+
+    tipSettings.style.display = 'block';
+  }
+
+  updateMainTimeLabel();
+
+  // Открыть настройки из "Ритуалов"
+  tipLink.addEventListener('click', openTipSettings);
+
+  // Переключатель включения
+  tipEnabledCheckbox.addEventListener('change', () => {
+    ritualTipState.enabled = tipEnabledCheckbox.checked;
+    tipExtra.style.display = ritualTipState.enabled ? 'block' : 'none';
+    updateMainTimeLabel();
+  });
+
+  // Открыть экран выбора времени
+  tipTimeBtn.addEventListener('click', () => {
+    tipSettings.style.display = 'none';
+    if (timeScreen) timeScreen.style.display = 'block';
+
+    // выставляем текущий выбор
+    timeOptions.forEach(opt => {
+      const val = opt.getAttribute('data-time');
+      opt.classList.toggle(
+        'ritual-time-option-selected',
+        ritualTipState.time === val
+      );
+    });
+  });
+
+  // Клик по временному слоту
+  timeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const val = opt.getAttribute('data-time');
+      ritualTipState.time = val;
+
+      timeOptions.forEach(o => o.classList.remove('ritual-time-option-selected'));
+      opt.classList.add('ritual-time-option-selected');
+
+      // возвращаемся на экран настроек
+      if (timeScreen) timeScreen.style.display = 'none';
+      openTipSettings();
+      updateMainTimeLabel();
+    });
+  });
+
+  // Кнопка "Готово"
+  if (tipSaveBtn) {
+    tipSaveBtn.addEventListener('click', () => {
+      const payload = {
+        type: 'daily_tip_settings',
+        enabled: ritualTipState.enabled,
+        time: ritualTipState.time,
+        timezone: ritualTipState.timezone
+      };
+
+      console.log('SAVE DAILY TIP:', payload);
+
+      // здесь позже можно включить отправку в бота:
+      // if (tg) tg.sendData(JSON.stringify(payload));
+
+      switchTab('rituals');
+    });
+  }
 }
