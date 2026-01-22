@@ -284,9 +284,11 @@ function initFeedbackLink() {
   if (!feedbackCard) return;
 
   feedbackCard.addEventListener('click', () => {
-    const url = 'https://t.me/reviews_esotericai'; // TODO: замени на свою группу
+    const url = 'https://t.me/https://t.me/reviews_esotericai'; // твоя ссылка на группу
 
-    if (tg && tg.openTelegramLink) {
+    console.log('Feedback clicked, open:', url);
+
+    if (tg && typeof tg.openTelegramLink === 'function') {
       tg.openTelegramLink(url);
     } else {
       window.open(url, '_blank');
