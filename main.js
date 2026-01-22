@@ -66,7 +66,7 @@ function switchTab(tab) {
   const tarotSection = document.getElementById('tarot-section');
   const subsSection = document.getElementById('subs-section');
   const profileBlocks = document.querySelectorAll(
-    '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #profile-tasks, #task1-details, #task2-details'
+    '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, #task1-details, #task2-details'
   );
   const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
 
@@ -85,7 +85,7 @@ function switchTab(tab) {
     if (tarotSection) tarotSection.style.display = 'none';
     profileBlocks.forEach(c => (c.style.display = 'none'));
   } else {
-    // профиль: показываем только основные карточки
+    // профиль
     if (tarotSection) tarotSection.style.display = 'none';
     if (subsSection) subsSection.style.display = 'none';
 
@@ -93,7 +93,7 @@ function switchTab(tab) {
       '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link'
     ).forEach(c => (c.style.display = 'block'));
 
-    ['profile-ref', 'profile-history', 'profile-tasks', 'task1-details', 'task2-details']
+    ['profile-ref', 'profile-history', 'profile-tasks', 'profile-task1-card', 'profile-task2-card', 'task1-details', 'task2-details']
       .forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
@@ -232,13 +232,15 @@ function initHistorySection() {
 
 function initTasksSection() {
   const tasksLink = document.getElementById('profile-tasks-link');
-  const tasksScreen = document.getElementById('profile-tasks');
+  const tasksHeader = document.getElementById('profile-tasks');
+  const task1CardSection = document.getElementById('profile-task1-card');
+  const task2CardSection = document.getElementById('profile-task2-card');
   const task1Details = document.getElementById('task1-details');
   const task2Details = document.getElementById('task2-details');
 
-  if (!tasksLink || !tasksScreen) return;
+  if (!tasksLink || !tasksHeader) return;
 
-  // Переход в список заданий
+  // Переход в раздел заданий (3 блока)
   tasksLink.addEventListener('click', () => {
     console.log('Tasks clicked');
 
@@ -246,21 +248,27 @@ function initTasksSection() {
       '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #task1-details, #task2-details'
     ).forEach(c => (c.style.display = 'none'));
 
-    tasksScreen.style.display = 'block';
+    tasksHeader.style.display = 'block';
+    if (task1CardSection) task1CardSection.style.display = 'block';
+    if (task2CardSection) task2CardSection.style.display = 'block';
   });
 
-  // Открытие деталей задания 1 / 2
-  const taskButtons = tasksScreen.querySelectorAll('.tasks-open-btn');
+  // Кнопки "Открыть задание 1/2"
+  const taskButtons = document.querySelectorAll('.tasks-open-btn');
   taskButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const taskId = btn.getAttribute('data-task');
-      tasksScreen.style.display = 'none';
+
+      if (tasksHeader) tasksHeader.style.display = 'none';
+      if (task1CardSection) task1CardSection.style.display = 'none';
+      if (task2CardSection) task2CardSection.style.display = 'none';
+
       if (taskId === '1' && task1Details) task1Details.style.display = 'block';
       if (taskId === '2' && task2Details) task2Details.style.display = 'block';
     });
   });
 
-  // Заглушки для "Забрать награду"
+  // Заглушки "Забрать награду"
   const claimButtons = document.querySelectorAll('.tasks-claim-btn');
   claimButtons.forEach(btn => {
     btn.addEventListener('click', () => {
