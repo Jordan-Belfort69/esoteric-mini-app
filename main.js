@@ -2,7 +2,11 @@ const API_URL = "http://127.0.0.1:8000/api/me"; // без user_id
 const tg = window.Telegram ? window.Telegram.WebApp : null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (tg) tg.ready();
+  if (tg) {
+    tg.ready();
+    tg.expand(); // ← вот этого не хватало
+  }
+
   loadProfile();
   initTabs();
   initTarotControls();
