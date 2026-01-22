@@ -154,17 +154,27 @@ function initTarotControls() {
 function initReferralSection() {
   const refLinkCard = document.getElementById('profile-ref-link');
   const refScreen = document.getElementById('profile-ref');
-  const profileCards = document.querySelectorAll(
-    '#profile-subscription, #profile-limits, #profile-ref-link'
-  );
   const tarotSection = document.getElementById('tarot-section');
-  const inviteBtn = document.getElementById('ref-invite-btn'); // если кнопка в HTML
+  const subsSection = document.getElementById('subs-section');
+  const helpContactCard = document.getElementById('profile-help-contact');
+  const inviteBtn = document.getElementById('ref-invite-btn');
 
   if (!refLinkCard || !refScreen) return;
 
   refLinkCard.addEventListener('click', () => {
-    profileCards.forEach(c => (c.style.display = 'none'));
+    // прячем ВСЕ карточки профиля и внутренние экраны
+    document.querySelectorAll(
+      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
+      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
+      '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
+      '#profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, ' +
+      '#task1-details, #task2-details, #profile-help, #profile-help-contact'
+    ).forEach(c => (c.style.display = 'none'));
+
     if (tarotSection) tarotSection.style.display = 'none';
+    if (subsSection) subsSection.style.display = 'none';
+
+    // показываем только экран рефералок
     refScreen.style.display = 'block';
   });
 
