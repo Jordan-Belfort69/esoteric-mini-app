@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTasksSection();
   initFeedbackLink();
   initNewsLink();
+  initHelpSection();
 });
 
 let tarotState = {
@@ -67,9 +68,9 @@ async function loadProfile() {
 function switchTab(tab) {
   const tarotSection = document.getElementById('tarot-section');
   const subsSection = document.getElementById('subs-section');
-  const profileBlocks = document.querySelectorAll(
-    '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, #task1-details, #task2-details'
-  );
+const profileBlocks = document.querySelectorAll(
+  '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, #task1-details, #task2-details, #profile-help'
+);
   const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
 
   navButtons.forEach(btn => {
@@ -92,10 +93,10 @@ function switchTab(tab) {
     if (subsSection) subsSection.style.display = 'none';
 
     document.querySelectorAll(
-      '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link'
+      '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-feedback-link, #profile-news-link, #profile-help-link'
     ).forEach(c => (c.style.display = 'block'));
 
-    ['profile-ref', 'profile-history', 'profile-tasks', 'profile-task1-card', 'profile-task2-card', 'task1-details', 'task2-details']
+    ['profile-ref', 'profile-history', 'profile-tasks', 'profile-task1-card', 'profile-task2-card', 'task1-details', 'task2-details', 'profile-help']
       .forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
@@ -312,4 +313,54 @@ function initNewsLink() {
       window.open(url, '_blank');
     }
   });
+}
+
+function initHelpSection() {
+  const helpLinkCard = document.getElementById('profile-help-link');
+  const helpScreen = document.getElementById('profile-help');
+  const tarotSection = document.getElementById('tarot-section');
+  const subsSection = document.getElementById('subs-section');
+
+  if (!helpLinkCard || !helpScreen) return;
+
+  helpLinkCard.addEventListener('click', () => {
+    // прячем основные карточки профиля
+    document.querySelectorAll(
+      '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, #task1-details, #task2-details'
+    ).forEach(c => (c.style.display = 'none'));
+
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (subsSection) subsSection.style.display = 'none';
+
+    helpScreen.style.display = 'block';
+  });
+
+  // открытие статей Telegraph
+  const articleButtons = helpScreen.querySelectorAll('.help-link-btn');
+  articleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.getAttribute('data-url');
+      if (!url) return;
+
+      if (tg && typeof tg.openLink === 'function') {
+        tg.openLink(url);
+      } else {
+        window.open(url, '_blank');
+      }
+    });
+  });
+
+  // кнопка "Написать разработчику"
+  const contactBtn = document.getElementById('help-contact-btn');
+  if (contactBtn) {
+    contactBtn.addEventListener('click', () => {
+      const url = 'https://t.me/your_username'; // сюда подставь свой @username/линк
+
+      if (tg && typeof tg.openTelegramLink === 'function') {
+        tg.openTelegramLink(url);
+      } else {
+        window.open(url, '_blank');
+      }
+    });
+  }
 }
