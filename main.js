@@ -318,21 +318,28 @@ function initNewsLink() {
 function initHelpSection() {
   const helpLinkCard = document.getElementById('profile-help-link');
   const helpScreen = document.getElementById('profile-help');
+  const helpContactCard = document.getElementById('profile-help-contact');
   const tarotSection = document.getElementById('tarot-section');
   const subsSection = document.getElementById('subs-section');
 
   if (!helpLinkCard || !helpScreen) return;
 
   helpLinkCard.addEventListener('click', () => {
-    // прячем основные карточки профиля
+    // прячем основные карточки профиля и внутренние экраны
     document.querySelectorAll(
-      '#profile-subscription, #profile-limits, #profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link, #profile-ref, #profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, #task1-details, #task2-details'
+      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
+      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
+      '#profile-feedback-link, #profile-news-link, ' +
+      '#profile-ref, #profile-history, #profile-tasks, ' +
+      '#profile-task1-card, #profile-task2-card, #task1-details, #task2-details, ' +
+      '#profile-help-contact'
     ).forEach(c => (c.style.display = 'none'));
 
     if (tarotSection) tarotSection.style.display = 'none';
     if (subsSection) subsSection.style.display = 'none';
 
     helpScreen.style.display = 'block';
+    if (helpContactCard) helpContactCard.style.display = 'block';
   });
 
   // открытие статей Telegraph
@@ -354,7 +361,7 @@ function initHelpSection() {
   const contactBtn = document.getElementById('help-contact-btn');
   if (contactBtn) {
     contactBtn.addEventListener('click', () => {
-      const url = 'https://t.me/your_username'; // сюда подставь свой @username/линк
+      const url = 'https://t.me/j_belfort69'; // сюда подставь свой @username
 
       if (tg && typeof tg.openTelegramLink === 'function') {
         tg.openTelegramLink(url);
@@ -364,3 +371,4 @@ function initHelpSection() {
     });
   }
 }
+

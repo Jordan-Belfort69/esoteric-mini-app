@@ -500,6 +500,10 @@
 .tasks-claim-wrapper {
   margin-top: 8px;
 }
+
+.help-intro {
+  margin-bottom: 12px; /* или 16px, как нравится */
+}
   </style>
 </head>
 
@@ -786,10 +790,10 @@
       </div>
     </section>
 
-        <!-- ===== СЕКЦИЯ: ЭКРАН ПОМОЩИ ===== -->
+    <!-- ===== СЕКЦИЯ: ЭКРАН ПОМОЩИ ===== -->
     <section class="card" id="profile-help" style="display:none;">
       <div class="history-title">ℹ️ Помощь</div>
-      <p class="tasks-intro">
+      <p class="tasks-intro help-intro">
         Здесь собраны полезные материалы по работе с ботом:
       </p>
 
@@ -831,13 +835,18 @@
             читать
           </button>
         </div>
+      </div>
+    </section>
 
+    <section class="card" id="profile-help-contact" style="display:none;">
       <div class="tasks-claim-wrapper">
         <button class="history-read-btn" id="help-contact-btn">
           ✉️ Написать разработчику
         </button>
       </div>
     </section>
+
+
 
         <!-- ===== СЕКЦИЯ: ЗАДАНИЕ 1 ===== -->
     <section class="card" id="task1-details" style="display:none;">
