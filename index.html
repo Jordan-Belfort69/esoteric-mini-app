@@ -195,6 +195,12 @@
       cursor: pointer;
     }
 
+        /* Более компактные ссылки только в разделе Ритуалы */
+    .ritual-card-link .card-link-inner {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
     .card-link-emoji {
       font-size: 16px;
     }
@@ -1030,95 +1036,55 @@
       </div>
     </section>
 
-        <!-- ===== СЕКЦИЯ: НАСТРОЙКА "ГОРОСКОП" ===== -->
-    <section class="card" id="ritual-horoscope-settings" style="display:none;">
-      <div style="text-align:center; margin-bottom:12px;">
-        <div style="font-size:40px; margin-bottom:4px;">🔮</div>
-        <div class="history-title" style="margin-bottom:4px;">Гороскоп</div>
-        <div class="history-answer-preview" style="margin-bottom:12px;">
-          Выберите свой знак зодиака.
-        </div>
-      </div>
+    <!-- ===== СЕКЦИЯ: НАСТРОЙКА "ГОРОСКОП" ===== -->
+    <section class="card" id="ritual-horoscope-settings" style="display:none;">
+      <div style="text-align:center; margin-bottom:12px;">
+        <div style="font-size:40px; margin-bottom:4px;">🔮</div>
+        <div class="history-title" style="margin-bottom:4px;">Гороскоп</div>
+        <div class="history-answer-preview" style="margin-bottom:12px;">
+          Короткий астропрогноз, чтобы мягко подсветить важные акценты вашего дня.
+        </div>
+      </div>
 
-      <!-- ЗНАКИ ЗОДИАКА: 3 колонки -->
-      <div class="history-title" style="margin-bottom:8px;">Знак зодиака</div>
-      <div class="horoscope-grid" id="horoscope-zodiac-grid">
-        <button class="horoscope-btn" data-zodiac="aries">
-          <span class="horoscope-emoji">♈</span>
-          <span class="horoscope-label">Овен</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="taurus">
-          <span class="horoscope-emoji">♉</span>
-          <span class="horoscope-label">Телец</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="gemini">
-          <span class="horoscope-emoji">♊</span>
-          <span class="horoscope-label">Близнецы</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="cancer">
-          <span class="horoscope-emoji">♋</span>
-          <span class="horoscope-label">Рак</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="leo">
-          <span class="horoscope-emoji">♌</span>
-          <span class="horoscope-label">Лев</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="virgo">
-          <span class="horoscope-emoji">♍</span>
-          <span class="horoscope-label">Дева</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="libra">
-          <span class="horoscope-emoji">♎</span>
-          <span class="horoscope-label">Весы</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="scorpio">
-          <span class="horoscope-emoji">♏</span>
-          <span class="horoscope-label">Скорпион</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="sagittarius">
-          <span class="horoscope-emoji">♐</span>
-          <span class="horoscope-label">Стрелец</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="capricorn">
-          <span class="horoscope-emoji">♑</span>
-          <span class="horoscope-label">Козерог</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="aquarius">
-          <span class="horoscope-emoji">♒</span>
-          <span class="horoscope-label">Водолей</span>
-        </button>
-        <button class="horoscope-btn" data-zodiac="pisces">
-          <span class="horoscope-emoji">♓</span>
-          <span class="horoscope-label">Рыбы</span>
-        </button>
-      </div>
+      <!-- Блок: ЗНАК ЗОДИАКА -->
+      <div class="tarot-subtitle">Выберите свой знак зодиака</div>
+      <div class="pill-row" id="horoscope-zodiac-row-1">
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="aries">♈ Овен</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="taurus">♉ Телец</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="gemini">♊ Близнецы</button>
+      </div>
+      <div class="pill-row" id="horoscope-zodiac-row-2">
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="cancer">♋ Рак</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="leo">♌ Лев</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="virgo">♍ Дева</button>
+      </div>
+      <div class="pill-row" id="horoscope-zodiac-row-3">
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="libra">♎ Весы</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="scorpio">♏ Скорпион</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="sagittarius">♐ Стрелец</button>
+      </div>
+      <div class="pill-row" id="horoscope-zodiac-row-4">
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="capricorn">♑ Козерог</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="aquarius">♒ Водолей</button>
+        <button class="pill-btn horoscope-zodiac-btn" data-zodiac="pisces">♓ Рыбы</button>
+      </div>
 
-      <!-- ВЫБОР СФЕРЫ -->
-      <div class="history-title" style="margin:8px 0;">Выберите сферу гороскопа</div>
-      <div class="horoscope-grid" id="horoscope-scope-grid">
-        <button class="horoscope-btn" data-scope="none">
-          <span class="horoscope-label">Без сферы</span>
-        </button>
-        <button class="horoscope-btn" data-scope="career">
-          <span class="horoscope-label">💼 Карьера</span>
-        </button>
-        <button class="horoscope-btn" data-scope="money">
-          <span class="horoscope-label">💰 Финансы</span>
-        </button>
-        <button class="horoscope-btn" data-scope="love">
-          <span class="horoscope-label">❤️ Отношения</span>
-        </button>
-        <button class="horoscope-btn" data-scope="health">
-          <span class="horoscope-label">💊 Здоровье</span>
-        </button>
-      </div>
+      <!-- Блок: СФЕРА ГОРОСКОПА -->
+      <div class="tarot-subtitle" style="margin-top:10px;">Выберите сферу гороскопа</div>
+      <div class="pill-row" id="horoscope-scope-row-1">
+        <button class="pill-btn horoscope-scope-btn" data-scope="none">Без сферы</button>
+        <button class="pill-btn horoscope-scope-btn" data-scope="career">💼 Карьера</button>
+        <button class="pill-btn horoscope-scope-btn" data-scope="money">💰 Финансы</button>
+      </div>
+      <div class="pill-row" id="horoscope-scope-row-2">
+        <button class="pill-btn horoscope-scope-btn" data-scope="love">❤️ Отношения</button>
+        <button class="pill-btn horoscope-scope-btn" data-scope="health">💊 Здоровье</button>
+      </div>
 
-      <div class="tasks-claim-wrapper">
-        <button class="history-read-btn" id="horoscope-read-btn">
-          Прочитать гороскоп
-        </button>
-      </div>
-    </section>
+      <button class="primary-btn" id="horoscope-read-btn">
+        Прочитать гороскоп
+      </button>
+    </section>
 
     <!-- ===== СЕКЦИЯ: ВЫБОР ВРЕМЕНИ ДЛЯ "СОВЕТ ДНЯ" ===== -->
     <section class="card" id="ritual-tip-time-screen" style="display:none;">
@@ -1243,7 +1209,7 @@
       </div>
 
     <!-- Кнопка настройки "Совет дня" -->
-    <section class="card card-link" id="ritual-tip-link">
+    <section class="card card-link ritual-card-link" id="ritual-tip-link">
       <div class="card-link-inner">
         <span class="card-link-emoji">🌞</span>
         <span class="card-link-text">Совет дня</span>
@@ -1252,7 +1218,7 @@
     </section>
 
     <!-- Кнопка настройки "Гороскоп" -->
-    <section class="card card-link" id="ritual-horoscope-link">
+    <section class="card card-link ritual-card-link" id="ritual-horoscope-link">
       <div class="card-link-inner">
         <span class="card-link-emoji">🔮</span>
         <span class="card-link-text">Гороскоп</span>
