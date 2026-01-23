@@ -631,7 +631,7 @@ function initHoroscope() {
   const screen = document.getElementById('ritual-horoscope-settings');
   const readBtn = document.getElementById('horoscope-read-btn');
 
-  // все кнопки выбора знака/сферы — по классам
+  // все кнопки выбора знака/сферы по классам из index.html
   const zodiacButtons = document.querySelectorAll('.horoscope-zodiac-btn');
   const scopeButtons = document.querySelectorAll('.horoscope-scope-btn');
 
@@ -723,4 +723,3 @@ function initHoroscope() {
     }
   });
 }
-
