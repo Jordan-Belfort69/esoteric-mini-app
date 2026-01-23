@@ -140,6 +140,23 @@
       margin: 10px 0 4px;
     }
 
+        .horoscope-intro {
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .horoscope-section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 8px 0 6px;
+    }
+
+    .horoscope-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px 8px;
+    }
+
     .pill-row {
       display: flex;
       gap: 8px;
@@ -1041,42 +1058,38 @@
       <div style="text-align:center; margin-bottom:12px;">
         <div style="font-size:40px; margin-bottom:4px;">🔮</div>
         <div class="history-title" style="margin-bottom:4px;">Гороскоп</div>
-        <div class="history-answer-preview" style="margin-bottom:12px;">
-          Короткий астропрогноз, чтобы мягко подсветить важные акценты вашего дня.
+        <div class="history-answer-preview horoscope-intro">
+          Короткий астропрогноз,<br>чтобы мягко подсветить важные акценты вашего дня.
         </div>
       </div>
 
       <!-- Блок: ЗНАК ЗОДИАКА -->
-      <div class="tarot-subtitle">Выберите свой знак зодиака</div>
-      <div class="pill-row" id="horoscope-zodiac-row-1">
+      <div class="horoscope-section-title">Выберите свой знак зодиака</div>
+      <div class="horoscope-grid">
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="aries">♈ Овен</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="taurus">♉ Телец</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="gemini">♊ Близнецы</button>
-      </div>
-      <div class="pill-row" id="horoscope-zodiac-row-2">
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="cancer">♋ Рак</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="leo">♌ Лев</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="virgo">♍ Дева</button>
-      </div>
-      <div class="pill-row" id="horoscope-zodiac-row-3">
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="libra">♎ Весы</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="scorpio">♏ Скорпион</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="sagittarius">♐ Стрелец</button>
-      </div>
-      <div class="pill-row" id="horoscope-zodiac-row-4">
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="capricorn">♑ Козерог</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="aquarius">♒ Водолей</button>
         <button class="pill-btn horoscope-zodiac-btn" data-zodiac="pisces">♓ Рыбы</button>
       </div>
 
       <!-- Блок: СФЕРА ГОРОСКОПА -->
-      <div class="tarot-subtitle" style="margin-top:10px;">Выберите сферу гороскопа</div>
-      <div class="pill-row" id="horoscope-scope-row-1">
+      <div class="horoscope-section-title" style="margin-top:10px;">
+        Выберите сферу гороскопа
+      </div>
+      <div class="pill-row">
         <button class="pill-btn horoscope-scope-btn" data-scope="none">Без сферы</button>
         <button class="pill-btn horoscope-scope-btn" data-scope="career">💼 Карьера</button>
         <button class="pill-btn horoscope-scope-btn" data-scope="money">💰 Финансы</button>
       </div>
-      <div class="pill-row" id="horoscope-scope-row-2">
+      <div class="pill-row">
         <button class="pill-btn horoscope-scope-btn" data-scope="love">❤️ Отношения</button>
         <button class="pill-btn horoscope-scope-btn" data-scope="health">💊 Здоровье</button>
       </div>
