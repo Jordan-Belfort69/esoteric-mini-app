@@ -534,7 +534,8 @@ function initRitualTip() {
 
       // if (tg) tg.sendData(JSON.stringify(payload));
 
-      switchTab('rituals');
+      updateMainTimeLabel();            // обновляем надпись на карточке
+      AppNavigation.switchTab('rituals'); // вместо switchTab('rituals')
     });
   }
 }
