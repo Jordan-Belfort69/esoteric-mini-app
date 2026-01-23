@@ -2,19 +2,16 @@ const API_URL = "http://127.0.0.1:8000/api/me"; // без user_id
 const tg = window.Telegram ? window.Telegram.WebApp : null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (tg) {
-    tg.ready();
-    tg.expand(); // ← вот этого не хватало
-  }
+  AppCore.initTelegram();
 
-  loadProfile();
-  initTabs();
+  AppProfile.loadProfile();          // вместо loadProfile()
+  AppNavigation.initTabs();
   initTarotControls();
   initReferralSection();
   initSubsControls();
   initBuySubButton();
-  initHistorySection();
-  initTasksSection();
+  AppProfile.initHistorySection();   // вместо initHistorySection()
+  AppProfile.initTasksSection();     // вместо initTasksSection()
   initFeedbackLink();
   initNewsLink();
   initHelpSection();
@@ -38,28 +35,6 @@ let horoscopeState = {
   zodiac: null,   // 'aries', 'taurus' ...
   scope: 'none'   // 'none', 'career', 'money', 'love', 'health'
 };
-
-function getInitData() {
-  if (!tg || !tg.initData) return null;
-  return tg.initData;
-}
-
-async function loadProfile() {
-  try {
-    const initData = getInitData();
-    const url = initData
-      ? `${API_URL}?initData=${encodeURIComponent(initData)}`
-      : `${API_URL}?user_id=1040828537`;
-
-    const res = await fetch(url);
-    const data = await res.json();
-
-    // ... заполнение DOM, как было ...
-  } catch (e) {
-    console.error("loadProfile error:", e);
-    // без alert, чтобы не мешать тесту sendData
-  }
-}
 
 function switchTab(tab) {
   const profileHeader = document.querySelector('.profile-header');
@@ -248,110 +223,6 @@ function initBuySubButton() {
   buySubCard.addEventListener('click', () => {
     // Переключаем нижнее меню на вкладку "Подписка"
     switchTab('subs');
-  });
-}
-
-function initHistorySection() {
-  const historyLink = document.getElementById('profile-history-link');
-  const historyScreen = document.getElementById('profile-history');
-  const tarotSection = document.getElementById('tarot-section');
-  const subsSection = document.getElementById('subs-section');
-  const profileHeader = document.querySelector('.profile-header');
-
-  if (!historyLink || !historyScreen) return;
-
-  historyLink.addEventListener('click', () => {
-    // прячем шапку
-    if (profileHeader) profileHeader.style.display = 'none';
-
-    // прячем ВСЕ карточки профиля и внутренние экраны
-    document.querySelectorAll(
-      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
-      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
-      '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
-      '#profile-support-link, ' +
-      '#profile-ref, #profile-tasks, #profile-task1-card, #profile-task2-card, ' +
-      '#task1-details, #task2-details, #profile-help, #profile-help-contact'
-    ).forEach(c => (c.style.display = 'none'));
-
-    if (tarotSection) tarotSection.style.display = 'none';
-    if (subsSection) subsSection.style.display = 'none';
-
-    // показываем только экран истории
-    historyScreen.style.display = 'block';
-  });
-
-  // заглушка для "Прочитать полностью"
-  const readButtons = historyScreen.querySelectorAll('.history-read-btn');
-  readButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      alert('Здесь будет полный текст ответа из базы (заглушка).');
-    });
-  });
-}
-
-function initTasksSection() {
-  const tasksLink = document.getElementById('profile-tasks-link');
-  const tasksHeader = document.getElementById('profile-tasks');
-  const task1CardSection = document.getElementById('profile-task1-card');
-  const task2CardSection = document.getElementById('profile-task2-card');
-  const task1Details = document.getElementById('task1-details');
-  const task2Details = document.getElementById('task2-details');
-
-  const tarotSection = document.getElementById('tarot-section');
-  const subsSection = document.getElementById('subs-section');
-  const profileHeader = document.querySelector('.profile-header');
-
-  if (!tasksLink || !tasksHeader) return;
-
-  // Переход в раздел заданий (3 блока)
-  tasksLink.addEventListener('click', () => {
-    console.log('Tasks clicked');
-
-    // прячем шапку
-    if (profileHeader) profileHeader.style.display = 'none';
-
-    // прячем все карточки профиля и другие экраны
-    document.querySelectorAll(
-      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
-      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
-      '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
-      '#profile-support-link, ' +
-      '#profile-ref, #profile-history, ' +
-      '#task1-details, #task2-details, #profile-help, #profile-help-contact'
-    ).forEach(c => (c.style.display = 'none'));
-
-    if (tarotSection) tarotSection.style.display = 'none';
-    if (subsSection) subsSection.style.display = 'none';
-
-    // показываем заголовок раздела и карточки заданий
-    tasksHeader.style.display = 'block';
-    if (task1CardSection) task1CardSection.style.display = 'block';
-    if (task2CardSection) task2CardSection.style.display = 'block';
-  });
-
-  // Кнопки "Открыть задание 1/2"
-  const taskButtons = document.querySelectorAll('.tasks-open-btn');
-  taskButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const taskId = btn.getAttribute('data-task');
-
-      if (tasksHeader) tasksHeader.style.display = 'none';
-      if (task1CardSection) task1CardSection.style.display = 'none';
-      if (task2CardSection) task2CardSection.style.display = 'none';
-
-      if (taskId === '1' && task1Details) task1Details.style.display = 'block';
-      if (taskId === '2' && task2Details) task2Details.style.display = 'block';
-    });
-  });
-
-  // Заглушки "Забрать награду"
-  const claimButtons = document.querySelectorAll('.tasks-claim-btn');
-  claimButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const taskId = btn.getAttribute('data-task');
-      alert('❌ Условие: Оставить отзыв о работе с проектом не выполнено! (task ' + taskId + ')');
-    });
   });
 }
 
