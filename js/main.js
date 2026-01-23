@@ -6,14 +6,14 @@ const tg = AppCore.tg; // берем tg из ядра
 document.addEventListener("DOMContentLoaded", () => {
   AppCore.initTelegram();
 
-  loadProfile();
+  AppProfile.loadProfile();
   AppNavigation.initTabs();
   initTarotControls();
-  initReferralSection();
-  initSubsControls();
-  initBuySubButton();
-  initHistorySection();
-  initTasksSection();
+  AppReferrals.initReferralSection(); // вместо initReferralSection()
+  AppSubs.initSubsControls();         // вместо initSubsControls()
+  AppSubs.initBuySubButton();         // вместо initBuySubButton()
+  AppProfile.initHistorySection();
+  AppProfile.initTasksSection();
   initFeedbackLink();
   initNewsLink();
   initHelpSection();
@@ -119,72 +119,6 @@ function initTarotControls() {
     tg.close();
   });
 } // ← этой скобки не хватало
-
-function initReferralSection() {
-  const refLinkCard = document.getElementById('profile-ref-link');
-  const refScreen = document.getElementById('profile-ref');
-  const tarotSection = document.getElementById('tarot-section');
-  const subsSection = document.getElementById('subs-section');
-  const helpContactCard = document.getElementById('profile-help-contact');
-  const inviteBtn = document.getElementById('ref-invite-btn');
-  const profileHeader = document.querySelector('.profile-header'); // ← шапка
-
-  if (!refLinkCard || !refScreen) return;
-
-  refLinkCard.addEventListener('click', () => {
-    // прячем шапку
-    if (profileHeader) profileHeader.style.display = 'none';
-
-    // прячем ВСЕ карточки профиля и внутренние экраны
-    document.querySelectorAll(
-      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
-      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
-      '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
-      '#profile-support-link, ' +
-      '#profile-history, #profile-tasks, #profile-task1-card, #profile-task2-card, ' +
-      '#task1-details, #task2-details, #profile-help, #profile-help-contact'
-    ).forEach(c => (c.style.display = 'none'));
-
-    if (tarotSection) tarotSection.style.display = 'none';
-    if (subsSection) subsSection.style.display = 'none';
-
-    // показываем только экран рефералок
-    refScreen.style.display = 'block';
-  });
-
-  if (inviteBtn) {
-    inviteBtn.addEventListener('click', () => {
-      console.log('Invite friends clicked');
-    });
-  }
-}
-
-function initSubsControls() {
-  const proBtn = document.getElementById('subs-btn-pro');
-  const mysticBtn = document.getElementById('subs-btn-mystic');
-
-  if (proBtn) {
-    proBtn.addEventListener('click', () => {
-      console.log('PRO clicked');
-      // TODO: здесь потом вызовешь бекенд/оплату
-    });
-  }
-
-  if (mysticBtn) {
-    mysticBtn.addEventListener('click', () => {
-      console.log('Mystic clicked');
-    });
-  }
-}
-
-function initBuySubButton() {
-  const buySubCard = document.getElementById('profile-buy-sub');
-  if (!buySubCard) return;
-
-  buySubCard.addEventListener('click', () => {
-    AppNavigation.switchTab('subs');
-  });
-}
 
 function initHistorySection() {
   const historyLink = document.getElementById('profile-history-link');
