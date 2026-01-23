@@ -8,24 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   AppProfile.loadProfile();
   AppNavigation.initTabs();
-  initTarotControls();
+  AppTarot.initTarotControls();
   AppReferrals.initReferralSection(); // вместо initReferralSection()
   AppSubs.initSubsControls();         // вместо initSubsControls()
   AppSubs.initBuySubButton();         // вместо initBuySubButton()
   AppProfile.initHistorySection();
   AppProfile.initTasksSection();
-  initFeedbackLink();
-  initNewsLink();
-  initHelpSection();
-  initSupportLink();
+  AppHelpSupport.initFeedbackLink();
+  AppHelpSupport.initNewsLink();
+  AppHelpSupport.initHelpSection();
+  AppHelpSupport.initSupportLink();
   initRitualTip();
   initHoroscope();
 });
-
-let tarotState = {
-  cards: 1,
-  deck: "rider",
-};
 
 let ritualTipState = {
   enabled: false,
@@ -81,44 +76,6 @@ async function loadProfile() {
     // без alert, чтобы не мешать тесту sendData
   }
 }
-
-function initTarotControls() {
-  const cardsButtons = document.querySelectorAll("[data-cards]");
-  cardsButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      tarotState.cards = parseInt(btn.getAttribute("data-cards"), 10);
-      cardsButtons.forEach(b => b.classList.remove("pill-btn-active"));
-      btn.classList.add("pill-btn-active");
-    });
-  });
-
-  const deckButtons = document.querySelectorAll("[data-deck]");
-  deckButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      tarotState.deck = btn.getAttribute("data-deck");
-      deckButtons.forEach(b => b.classList.remove("pill-btn-active"));
-      btn.classList.add("pill-btn-active");
-    });
-  });
-
-  const askBtn = document.getElementById("tarot-ask-btn");
-  askBtn.addEventListener("click", () => {
-    if (!tg) {
-      alert("Эта кнопка работает только внутри Telegram Mini App");
-      return;
-    }
-
-    const payload = {
-      type: "debug_click",
-      ts: Date.now(),
-      note: "кнопка Задать вопрос в боте нажата",
-    };
-
-    console.log("SEND DATA:", payload);
-    tg.sendData(JSON.stringify(payload));
-    tg.close();
-  });
-} // ← этой скобки не хватало
 
 function initHistorySection() {
   const historyLink = document.getElementById('profile-history-link');
@@ -221,120 +178,6 @@ function initTasksSection() {
       const taskId = btn.getAttribute('data-task');
       alert('❌ Условие: Оставить отзыв о работе с проектом не выполнено! (task ' + taskId + ')');
     });
-  });
-}
-
-function initFeedbackLink() {
-  const feedbackCard = document.getElementById('profile-feedback-link');
-  if (!feedbackCard) return;
-
-  feedbackCard.addEventListener('click', () => {
-    const url = 'https://t.me/reviews_esotericai'; // @reviews_esotericai
-
-    console.log('Feedback clicked, open:', url);
-
-    if (tg && typeof tg.openTelegramLink === 'function') {
-      tg.openTelegramLink(url);          // для Telegram-клиента
-    } else {
-      window.open(url, '_blank');        // для веб-браузера
-    }
-  });
-}
-
-function initNewsLink() {
-  const newsCard = document.getElementById('profile-news-link');
-  if (!newsCard) return;
-
-  newsCard.addEventListener('click', () => {
-    const url = 'https://t.me/news_esotericai'; // замени на ссылку канала
-
-    console.log('News clicked, open:', url);
-
-    if (tg && typeof tg.openTelegramLink === 'function') {
-      tg.openTelegramLink(url);
-    } else {
-      window.open(url, '_blank');
-    }
-  });
-}
-
-function initHelpSection() {
-  const helpLinkCard = document.getElementById('profile-help-link');
-  const helpScreen = document.getElementById('profile-help');
-  const helpContactCard = document.getElementById('profile-help-contact');
-  const tarotSection = document.getElementById('tarot-section');
-  const subsSection = document.getElementById('subs-section');
-  const profileHeader = document.querySelector('.profile-header');
-
-  if (!helpLinkCard || !helpScreen) return;
-
-  helpLinkCard.addEventListener('click', () => {
-    // прячем шапку
-    if (profileHeader) profileHeader.style.display = 'none';
-
-    // прячем все карточки профиля и внутренние экраны
-    document.querySelectorAll(
-      '#profile-subscription, #profile-limits, #profile-buy-sub, ' +
-      '#profile-history-link, #profile-tasks-link, #profile-ref-link, ' +
-      '#profile-feedback-link, #profile-news-link, #profile-help-link, ' +
-      '#profile-support-link, ' +
-      '#profile-ref, #profile-history, #profile-tasks, ' +
-      '#profile-task1-card, #profile-task2-card, #task1-details, #task2-details, ' +
-      '#profile-help-contact'
-    ).forEach(c => (c.style.display = 'none'));
-
-    if (tarotSection) tarotSection.style.display = 'none';
-    if (subsSection) subsSection.style.display = 'none';
-
-    // показываем экран помощи + отдельную кнопку
-    helpScreen.style.display = 'block';
-    if (helpContactCard) helpContactCard.style.display = 'block';
-  });
-
-  // открытие статей Telegraph
-  const articleButtons = helpScreen.querySelectorAll('.help-link-btn');
-  articleButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const url = btn.getAttribute('data-url');
-      if (!url) return;
-
-      if (tg && typeof tg.openLink === 'function') {
-        tg.openLink(url);
-      } else {
-        window.open(url, '_blank');
-      }
-    });
-  });
-
-  // кнопка "Написать разработчику"
-  const contactBtn = document.getElementById('help-contact-btn');
-  if (contactBtn) {
-    contactBtn.addEventListener('click', () => {
-      const url = 'https://t.me/j_belfort69';
-
-      if (tg && typeof tg.openTelegramLink === 'function') {
-        tg.openTelegramLink(url);
-      } else {
-        window.open(url, '_blank');
-      }
-    });
-  }
-}
-
-function initSupportLink() {
-  const supportCard = document.getElementById('profile-support-link');
-  if (!supportCard) return;
-
-  supportCard.addEventListener('click', () => {
-    const url = 'https://t.me/j_belfort69'; // сюда линк/юзернейм саппорта
-
-    console.log('Support clicked, open:', url);
-
-    if (tg && typeof tg.openTelegramLink === 'function') {
-      tg.openTelegramLink(url);
-    } else {
-      window.open(url, '_blank');
-    }
   });
 }
 
