@@ -638,6 +638,27 @@
 
 
 /* ===== ЗАДАНИЯ ===== */
+.tasks-hero {
+  text-align: center;           /* можно center, если хочешь как в гороскопе */
+}
+
+.tasks-emoji {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.tasks-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.tasks-subtitle {
+  font-size: 13px;
+  color: #e5e7eb;
+  line-height: 1.4;
+}
+
 .tasks-header {
   margin-bottom: 10px;
 }
