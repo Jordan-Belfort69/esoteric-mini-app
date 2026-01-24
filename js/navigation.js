@@ -22,6 +22,10 @@ window.AppNavigation = (() => {
       '#profile-help, #profile-help-contact'
     );
 
+    // элементы истории
+    const historyHeader = document.getElementById('profile-history');
+    const historyCards = document.querySelectorAll('.history-item-card');
+
     const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
 
     navButtons.forEach(btn => {
@@ -29,6 +33,10 @@ window.AppNavigation = (() => {
       if (!t) return;
       btn.classList.toggle('nav-btn-active', t === tab);
     });
+
+    // при любой смене вкладки прячем историю и её карточки
+    if (historyHeader) historyHeader.style.display = 'none';
+    historyCards.forEach(card => (card.style.display = 'none'));
 
     if (tab === 'tarot') {
       if (profileHeader) profileHeader.style.display = 'none';
@@ -97,11 +105,6 @@ window.AppNavigation = (() => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
       });
-      
-      // Скрываем карточки истории (если были открыты)
-      document.querySelectorAll('.history-item-card').forEach(card => {
-        card.style.display = 'none';
-      });
     }
   }
 
@@ -119,4 +122,3 @@ window.AppNavigation = (() => {
     initTabs,
   };
 })();
-
