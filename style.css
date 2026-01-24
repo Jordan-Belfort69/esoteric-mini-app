@@ -818,3 +818,11 @@
 .history-hero .history-subtitle {
   text-align: center;        /* текст остаётся прижат к левому краю */
 }
+
+.section-icon {
+  width: 40px;         /* фактический размер в интерфейсе */
+  height: 40px;
+  object-fit: contain; /* чтобы не искажались */
+  display: block;
+  margin: 0 auto;      /* по центру */
+}
