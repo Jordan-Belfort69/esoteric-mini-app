@@ -199,6 +199,10 @@
       font-size: 12px;     /* было 13px */
     }
 
+    .pill-empty {
+      visibility: hidden;      /* ячейка занимает место, но невидима */
+      pointer-events: none;    /* по ней нельзя кликнуть */
+    }
 
     .primary-btn {
       width: 100%;
