@@ -527,6 +527,20 @@
   margin-bottom: 10px;
 }
 
+/* ДОБАВЬ СЮДА, сразу после .history-title */
+#task1-details .history-question,
+#task1-details .history-answer-preview,
+#task2-details .history-question,
+#task2-details .history-answer-preview {
+  font-size: 13px;          /* было 13/12 → делаем всё 13 */
+  line-height: 1.5;
+}
+
+#task1-details .tasks-note,
+#task2-details .tasks-note {
+  font-size: 12px;          /* было 11 */
+  line-height: 1.5;
+}
 
 .history-item {
   background: #020617;
