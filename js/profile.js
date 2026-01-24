@@ -48,7 +48,13 @@ window.AppProfile = (() => {
       if (tarotSection) tarotSection.style.display = 'none';
       if (subsSection) subsSection.style.display = 'none';
 
+      // показываем шапку истории
       historyScreen.style.display = 'block';
+
+      // показываем все карточки истории
+      document.querySelectorAll('.history-item-card').forEach(card => {
+        card.style.display = 'block';
+      });
     });
 
     const readButtons = historyScreen.querySelectorAll('.history-read-btn');

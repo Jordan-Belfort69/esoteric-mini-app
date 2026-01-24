@@ -97,6 +97,11 @@ window.AppNavigation = (() => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
       });
+      
+      // Скрываем карточки истории (если были открыты)
+      document.querySelectorAll('.history-item-card').forEach(card => {
+        card.style.display = 'none';
+      });
     }
   }
 
