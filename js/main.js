@@ -128,13 +128,15 @@ const AppRouter = {
     // 1.2 Показ экранов Таро
     const tarotSection = document.getElementById("tarot-section");
     const tarotSettings = document.getElementById("tarot-settings");
+    const tarotVoiceSettings = document.getElementById("tarot-voice-settings");
     if (tarotSection) tarotSection.style.display = "none";
     if (tarotSettings) tarotSettings.style.display = "none";
+    if (tarotVoiceSettings) tarotVoiceSettings.style.display = "none";
 
     if (screen === "tarot") {
       if (tarotSection) tarotSection.style.display = "block";
     } else if (screen === "tarot-inner") {
-      if (tarotSettings) tarotSettings.style.display = "block";
+      // здесь ничего не включаем — нужный экран покажет tarot.js
     }
 
     // 2) нижнее меню
