@@ -561,69 +561,104 @@
       </div>
     </section>
 
-    <!-- ===== СЕКЦИЯ: ЭКРАН ПОДПИСКИ (ВКЛАДКА "ПОДПИСКА") ===== -->
+    <!-- ===== СЕКЦИЯ: ЭКРАН ПОКУПКИ СООБЩЕНИЙ ===== -->
     <section id="subs-section" style="display:none;">
 
-      <!-- Шапка экрана подписок -->
+      <!-- Шапка экрана (оставляем общий стиль) -->
       <div class="subs-hero">
-      <div class="subs-emoji">
-        <img src="img/subs.png" alt="Подписки" class="section-icon">
-      </div>
-        <div class="subs-title">EsotericAI подписки</div>
+        <div class="subs-emoji">
+          <img src="img/subs.png" alt="Покупка сообщений" class="section-icon">
+        </div>
+        <div class="subs-title">EsotericAI сообщения</div>
         <div class="subs-subtitle section-intro">
-          Выбери тариф подписки, чтобы получать больше ритуалов, раскладов и гороскопов каждый день.
+          Пополняй баланс сообщений, чтобы получать больше ритуалов, раскладов и гороскопов каждый день.
         </div>
       </div>
 
-      <!-- Блок: текущая подписка -->
+      <!-- Блок: выбор количества сообщений -->
       <div class="subs-card">
-        <div class="subs-current">
-          🟢 Сейчас у тебя подписка: <span class="subs-current-name">🆓 Free</span>
+        <div class="subs-header-title">Выберите количество сообщений</div>
+
+        <div class="subs-option-row subs-option-row-active" data-messages="100">
+          <div class="subs-option-main">
+            <div class="subs-option-title">100 сообщений</div>
+          </div>
+          <div class="subs-option-price">300 ₽</div>
+        </div>
+
+        <div class="subs-option-row" data-messages="200">
+          <div class="subs-option-main">
+            <div class="subs-option-title">200 сообщений</div>
+            <div class="subs-option-tag">−5% скидка</div>
+          </div>
+          <div class="subs-option-price">570 ₽</div>
+        </div>
+
+        <div class="subs-option-row" data-messages="300">
+          <div class="subs-option-main">
+            <div class="subs-option-title">300 сообщений</div>
+            <div class="subs-option-tag">−10% скидка</div>
+          </div>
+          <div class="subs-option-price">810 ₽</div>
+        </div>
+
+        <div class="subs-option-row" data-messages="500">
+          <div class="subs-option-main">
+            <div class="subs-option-title">500 сообщений</div>
+            <div class="subs-option-tag">−15% скидка</div>
+          </div>
+          <div class="subs-option-price">1 275 ₽</div>
+        </div>
+
+        <div class="subs-option-row" data-messages="1000">
+          <div class="subs-option-main">
+            <div class="subs-option-title">1000 сообщений</div>
+            <div class="subs-option-tag">−20% скидка</div>
+          </div>
+          <div class="subs-option-price">2 400 ₽</div>
         </div>
       </div>
 
-      <!-- Блок: Free -->
+      <!-- Блок: выбор метода оплаты -->
       <div class="subs-card">
-        <div class="subs-plan-title">🆓 Free</div>
-        <ul class="subs-list">
-          <li>1 ритуал в день</li>
-          <li>1 расклад Таро</li>
-          <li>1 гороскоп</li>
-        </ul>
+        <div class="subs-header-title">Выберите метод оплаты</div>
+
+        <div class="subs-pay-row subs-pay-row-active" data-method="sbp">
+          <span>СБП</span>
+        </div>
+        <div class="subs-pay-row" data-method="card">
+          <span>Банковская карта</span>
+        </div>
+        <div class="subs-pay-row" data-method="stars">
+          <span>Telegram Stars</span>
+        </div>
       </div>
 
-      <!-- Блок: PRO -->
+      <!-- Блок: email для чека -->
       <div class="subs-card">
-        <div class="subs-plan-title">🌙 PRO — 299 ₽ / 30 дней</div>
-        <ul class="subs-list">
-          <li>До 10 ритуалов в день</li>
-          <li>До 10 раскладов Таро</li>
-          <li>До 5 гороскопов</li>
-          <li>Приоритетные ответы бота</li>
-        </ul>
+        <div class="subs-header-title">Укажите ваш E‑mail для отправки чека</div>
+        <input
+          type="email"
+          id="subs-email-input"
+          class="subs-email-input"
+          placeholder="Email"
+          inputmode="email"
+        />
       </div>
 
-      <!-- Блок: Mystic -->
-      <div class="subs-card">
-        <div class="subs-plan-title">🔮 Mystic — 599 ₽ / 30 дней</div>
-        <ul class="subs-list">
-          <li>До 50 ритуалов в день</li>
-          <li>До 50 раскладов Таро</li>
-          <li>До 20 гороскопов</li>
-          <li>Особые глубокие ритуалы</li>
-          <li>Недельные ритуальные планы только для Mystic</li>
-        </ul>
+      <!-- Текст соглашения -->
+      <div class="subs-terms-text">
+        Приобретая платные сообщения, вы принимаете
+        <button type="button" class="link-button" id="subs-terms-link">
+          Условия пользовательского соглашения
+        </button>
       </div>
 
-            <!-- Кнопки выбора тарифа -->
-      <div class="subs-buttons">
-        <button class="subs-btn subs-btn-pro" id="subs-btn-pro">🌙 PRO</button>
-      </div>
-
-      <div class="subs-buttons">
-        <button class="subs-btn subs-btn-mystic" id="subs-btn-mystic">🔮 Mystic</button>
-      </div>
-      </section>
+      <!-- Кнопка Купить -->
+      <button class="primary-btn" id="subs-buy-btn">
+        Купить
+      </button>
+    </section>
 
     <!-- ===== СЕКЦИЯ: ВКЛАДКА "ТАРО" ===== -->
     <section class="card tarot-section" id="tarot-section" style="display:none;">
