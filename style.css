@@ -418,36 +418,54 @@
 
 /* Строки выбора количества сообщений */
 .subs-option-row {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
-  border-radius: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
   background: #020617;
   margin-top: 6px;
   font-size: 13px;
   cursor: pointer;
+  color: #e5e7eb;
 }
 
 .subs-option-row-active {
-  border: 1px solid #4f46e5;
-  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.3);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.4);
+  background: #111827;
+}
+
+.subs-option-row:active {
+  transform: translateY(1px);
+  opacity: 0.98;
 }
 
 .subs-option-main {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  text-align: left;
+}
+
+.subs-option-right {
+  text-align: right;
 }
 
 .subs-option-title {
   font-weight: 500;
-  color: #e5e7eb;
+  color: #f9fafb;
 }
 
 .subs-option-tag {
   font-size: 11px;
-  color: #22c55e;
+  color: #9ca3af;
+}
+
+.subs-option-tag-sale {
+  color: #f97373; /* скидка красным */
 }
 
 .subs-option-price {
@@ -456,20 +474,29 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Строки выбора метода оплаты */
+/* Кнопки выбора метода оплаты */
 .subs-pay-row {
-  padding: 8px 10px;
-  border-radius: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
   background: #020617;
   margin-top: 6px;
   font-size: 13px;
   color: #e5e7eb;
   cursor: pointer;
+  text-align: left;
 }
 
 .subs-pay-row-active {
-  border: 1px solid #4f46e5;
-  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.3);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.4);
+  background: #111827;
+}
+
+.subs-pay-row:active {
+  transform: translateY(1px);
+  opacity: 0.98;
 }
 
 /* Поле email */
@@ -501,14 +528,15 @@
   line-height: 1.4;
 }
 
-/* Кнопка-ссылка внутри текста условий */
-.link-button {
-  border: none;
-  background: none;
+/* Ссылка в тексте условий */
+.link-inline {
   color: #60a5fa;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.link-inline:active {
+  opacity: 0.8;
 }
 
 .subs-btn {

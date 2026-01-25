@@ -579,59 +579,69 @@
       <div class="subs-card">
         <div class="subs-header-title">Выберите количество сообщений</div>
 
-        <div class="subs-option-row subs-option-row-active" data-messages="100">
+        <button class="subs-option-row subs-option-row-active" data-messages="100">
           <div class="subs-option-main">
             <div class="subs-option-title">100 сообщений</div>
           </div>
-          <div class="subs-option-price">300 ₽</div>
-        </div>
+          <div class="subs-option-right">
+            <div class="subs-option-price">300 ₽</div>
+          </div>
+        </button>
 
-        <div class="subs-option-row" data-messages="200">
+        <button class="subs-option-row" data-messages="200">
           <div class="subs-option-main">
             <div class="subs-option-title">200 сообщений</div>
-            <div class="subs-option-tag">−5% скидка</div>
+            <div class="subs-option-tag subs-option-tag-sale">−5% скидка</div>
           </div>
-          <div class="subs-option-price">570 ₽</div>
-        </div>
+          <div class="subs-option-right">
+            <div class="subs-option-price">570 ₽</div>
+          </div>
+        </button>
 
-        <div class="subs-option-row" data-messages="300">
+        <button class="subs-option-row" data-messages="300">
           <div class="subs-option-main">
             <div class="subs-option-title">300 сообщений</div>
-            <div class="subs-option-tag">−10% скидка</div>
+            <div class="subs-option-tag subs-option-tag-sale">−10% скидка</div>
           </div>
-          <div class="subs-option-price">810 ₽</div>
-        </div>
+          <div class="subs-option-right">
+            <div class="subs-option-price">810 ₽</div>
+          </div>
+        </button>
 
-        <div class="subs-option-row" data-messages="500">
+        <button class="subs-option-row" data-messages="500">
           <div class="subs-option-main">
             <div class="subs-option-title">500 сообщений</div>
-            <div class="subs-option-tag">−15% скидка</div>
+            <div class="subs-option-tag subs-option-tag-sale">−15% скидка</div>
           </div>
-          <div class="subs-option-price">1 275 ₽</div>
-        </div>
+          <div class="subs-option-right">
+            <div class="subs-option-price">1 275 ₽</div>
+          </div>
+        </button>
 
-        <div class="subs-option-row" data-messages="1000">
+        <button class="subs-option-row" data-messages="1000">
           <div class="subs-option-main">
             <div class="subs-option-title">1000 сообщений</div>
-            <div class="subs-option-tag">−20% скидка</div>
+            <div class="subs-option-tag subs-option-tag-sale">−20% скидка</div>
           </div>
-          <div class="subs-option-price">2 400 ₽</div>
-        </div>
+          <div class="subs-option-right">
+            <div class="subs-option-price">2 400 ₽</div>
+          </div>
+        </button>
       </div>
 
       <!-- Блок: выбор метода оплаты -->
       <div class="subs-card">
         <div class="subs-header-title">Выберите метод оплаты</div>
 
-        <div class="subs-pay-row subs-pay-row-active" data-method="sbp">
-          <span>СБП</span>
-        </div>
-        <div class="subs-pay-row" data-method="card">
-          <span>Банковская карта</span>
-        </div>
-        <div class="subs-pay-row" data-method="stars">
-          <span>Telegram Stars</span>
-        </div>
+        <button class="subs-pay-row subs-pay-row-active" data-method="sbp">
+          СБП
+        </button>
+        <button class="subs-pay-row" data-method="card">
+          Банковская карта
+        </button>
+        <button class="subs-pay-row" data-method="stars">
+          Telegram Stars
+        </button>
       </div>
 
       <!-- Блок: email для чека -->
@@ -649,9 +659,9 @@
       <!-- Текст соглашения -->
       <div class="subs-terms-text">
         Приобретая платные сообщения, вы принимаете
-        <button type="button" class="link-button" id="subs-terms-link">
+        <a href="#" id="subs-terms-link" class="link-inline">
           Условия пользовательского соглашения
-        </button>
+        </a>
       </div>
 
       <!-- Кнопка Купить -->
