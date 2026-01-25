@@ -25,6 +25,10 @@ window.AppSubs = (() => {
 
     buySubCard.addEventListener('click', () => {
       const profileHeader = document.querySelector('.profile-header');
+
+      // говорим навигации, что мы на подэкране профиля
+      AppNavigation.switchTab('profile', 'subscreen');
+
       if (profileHeader) profileHeader.style.display = 'none';
 
       [
