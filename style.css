@@ -455,7 +455,7 @@
 .subs-option-main {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;             /* было 2px */
   text-align: left;
 }
 
@@ -463,12 +463,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-start;  /* было center */
 }
 
 .subs-option-title {
   font-weight: 500;
   color: #f9fafb;
+  line-height: 1.2;   /* добавим, чтобы текст не «плавал» */
 }
 
 .subs-option-tag {
