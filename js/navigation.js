@@ -133,9 +133,18 @@ window.AppNavigation = (() => {
     navButtons.forEach(btn => {
       const tab = btn.getAttribute('data-tab');
       if (!tab) return;
-      // при клике по нижней навигации всегда открываем главный экран вкладки
+
       btn.addEventListener('click', () => {
-        switchTab(tab, 'main');   // ← возвращаем старое поведение
+        if (tab === 'profile') {
+          AppRouter.stack = ['profile'];
+        } else if (tab === 'tarot') {
+          AppRouter.stack = ['tarot'];
+        } else if (tab === 'rituals') {
+          AppRouter.stack = ['rituals'];
+        } else if (tab === 'more') {
+          AppRouter.stack = ['more'];
+        }
+        AppRouter.apply();
       });
     });
   }
