@@ -671,12 +671,28 @@
       </button>
     </section>
 
-    <!-- ===== СЕКЦИЯ: ВКЛАДКА "ТАРО" ===== -->
-    <section class="card tarot-section" id="tarot-section" style="display:none;">
-      <div class="tarot-hero">
-      <div class="tarot-emoji">
-        <img src="img/tarot.png" alt="Таро" class="section-icon">
+    <!-- ===== СЕКЦИЯ: ВКЛАДКА "ТАРО" (СПИСОК) ===== -->
+    <section id="tarot-section" style="display:none;">
+      <div class="history-title" style="margin-bottom:8px;">
+        Таро
       </div>
+
+      <!-- Кнопка входа в экран расклада -->
+      <section class="card card-link" id="tarot-open-link">
+        <div class="card-link-inner">
+          <span class="card-link-emoji">🎴</span>
+          <span class="card-link-text">Таро</span>
+          <span class="card-link-arrow">›</span>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== ВНУТРЕННИЙ ЭКРАН: НАСТРОЙКИ РАСКЛАДА ТАРО ===== -->
+    <section class="card tarot-section" id="tarot-settings" style="display:none;">
+      <div class="tarot-hero">
+        <div class="tarot-emoji">
+          <img src="img/tarot.png" alt="Таро" class="section-icon">
+        </div>
         <div class="tarot-title-main">Выбор расклада</div>
         <div class="section-intro">
           Сначала выбери формат расклада, затем нажми кнопку — бот попросит

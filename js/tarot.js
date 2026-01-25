@@ -6,9 +6,29 @@ window.AppTarot = (() => {
     deck: 'rider',
   };
 
+  function openTarotSettings() {
+    const tarotSection = document.getElementById('tarot-section');
+    const tarotSettings = document.getElementById('tarot-settings');
+
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (tarotSettings) tarotSettings.style.display = 'block';
+
+    // внутренний экран Таро
+    AppRouter.go('tarot-inner');
+  }
+
   function initTarotControls() {
     const tg = AppCore.tg;
 
+    // кнопка "🎴 Таро" на корневом экране
+    const tarotOpenLink = document.getElementById('tarot-open-link');
+    if (tarotOpenLink) {
+      tarotOpenLink.addEventListener('click', () => {
+        openTarotSettings();
+      });
+    }
+
+    // дальше – твоя текущая логика выбора карт и колоды
     const cardsButtons = document.querySelectorAll('[data-cards]');
     cardsButtons.forEach(btn => {
       btn.addEventListener('click', () => {

@@ -1,6 +1,6 @@
 // ===== РОУТЕР ЭКРАНОВ =====
 // profile / buy / history / tasks / task1 / task2 / referral /
-// tarot / rituals / tip / horoscope / more / help
+// tarot / tarot-inner / rituals / tip / horoscope / more / help
 const AppRouter = {
   stack: ["profile"],
 
@@ -20,6 +20,13 @@ const AppRouter = {
     if (cur === "task1" || cur === "task2") {
       this.stack.pop();          // убрать task*
       this.stack.push("tasks");  // гарантируем tasks сверху
+      this.apply();
+      return;
+    }
+
+    // Внутренний экран Таро → назад в корневой Таро
+    if (cur === "tarot-inner") {
+      this.stack = ["tarot"];
       this.apply();
       return;
     }
@@ -54,8 +61,9 @@ const AppRouter = {
     // 1) переключаем основной таб
     if (["profile","buy","history","tasks","task1","task2","referral"].includes(screen)) {
       AppNavigation.switchTab("profile", screen === "profile" ? "main" : "subscreen");
-    } else if (screen === "tarot") {
-      AppNavigation.switchTab("tarot");
+    } else if (screen === "tarot" || screen === "tarot-inner") {
+      // для внутренних экранов Таро всё равно держим вкладку "Таро" активной
+      AppNavigation.switchTab("tarot", screen === "tarot" ? "main" : "subscreen");
     } else if (["rituals","tip","horoscope"].includes(screen)) {
       AppNavigation.switchTab("rituals");
     } else if (["more","help"].includes(screen)) {
@@ -117,6 +125,18 @@ const AppRouter = {
       if (moreSection) moreSection.style.display = "none";
     }
 
+    // 1.2 Показ экранов Таро
+    const tarotSection = document.getElementById("tarot-section");
+    const tarotSettings = document.getElementById("tarot-settings");
+    if (tarotSection) tarotSection.style.display = "none";
+    if (tarotSettings) tarotSettings.style.display = "none";
+
+    if (screen === "tarot") {
+      if (tarotSection) tarotSection.style.display = "block";
+    } else if (screen === "tarot-inner") {
+      if (tarotSettings) tarotSettings.style.display = "block";
+    }
+
     // 2) нижнее меню
     const needBottomNav = ["profile","tarot","rituals","more"].includes(screen);
     if (needBottomNav) {
@@ -143,33 +163,3 @@ const AppRouter = {
     }
   }
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  AppCore.initTelegram();
-
-  const tg = AppCore.tg;
-  if (tg) {
-    const backBtn = tg.BackButton;
-    const mainBtn = tg.MainButton;
-
-    backBtn.onClick(() => AppRouter.back());
-    mainBtn.onClick(() => tg.close());
-  }
-
-  // стартуем с профиля
-  AppRouter.apply();
-
-  AppProfile.loadProfile();
-  AppNavigation.initTabs();
-  AppTarot.initTarotControls();
-  AppReferrals.initReferralSection();
-  AppSubs.initSubsControls();
-  AppSubs.initBuySubButton();
-  AppProfile.initHistorySection();
-  AppProfile.initTasksSection();
-  AppProfile.initRefLinkSection();
-  AppProfile.initRefBonusBlock();
-  AppMore.initMore();
-  AppRitualTip.initRitualTip();
-  AppHoroscope.initHoroscope();
-});
