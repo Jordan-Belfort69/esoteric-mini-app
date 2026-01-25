@@ -83,7 +83,7 @@ window.AppNavigation = (() => {
       if (moreSection) moreSection.style.display = 'block';
     } else {
       // вкладка "Профиль"
-      if (profileHeader) profileHeader.style.display = 'flex';
+      // шапкой профиля управляет AppRouter.apply()
       if (tarotSection) tarotSection.style.display = 'none';
       if (subsSection) subsSection.style.display = 'none';
       if (ritualsSection) ritualsSection.style.display = 'none';
