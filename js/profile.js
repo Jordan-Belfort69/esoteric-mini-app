@@ -48,7 +48,7 @@ async function loadProfile() {
     if (!historyLink || !historyScreen) return;
 
     historyLink.addEventListener('click', () => {
-      AppNavigation.switchTab('profile', 'subscreen'); // ← добавить сюда
+      AppRouter.go('history');
       
       if (profileHeader) profileHeader.style.display = 'none';
 
@@ -96,7 +96,7 @@ async function loadProfile() {
     tasksLink.addEventListener('click', () => {
       console.log('Tasks clicked');
 
-      AppNavigation.switchTab('profile', 'subscreen'); // <— Новая строка
+      AppRouter.go('tasks');
 
       if (profileHeader) profileHeader.style.display = 'none';
 
@@ -119,6 +119,8 @@ async function loadProfile() {
     taskButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const taskId = btn.getAttribute('data-task');
+
+        AppRouter.go('task_details');  // ← НОВАЯ строка
 
         if (tasksHeader) tasksHeader.style.display = 'none';
         if (task1CardSection) task1CardSection.style.display = 'none';
@@ -146,7 +148,7 @@ async function loadProfile() {
   if (!refLink || !refScreen) return;
 
   refLink.addEventListener('click', () => {
-    AppNavigation.switchTab('profile', 'subscreen'); // <— Новая строка
+    AppRouter.go('referral');
     
     if (profileHeader) profileHeader.style.display = 'none';
 
