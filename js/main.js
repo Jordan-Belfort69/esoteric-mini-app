@@ -163,3 +163,34 @@ const AppRouter = {
     }
   }
 };
+
+// ===== ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ =====
+document.addEventListener("DOMContentLoaded", () => {
+  AppCore.initTelegram();
+
+  const tg = AppCore.tg;
+  if (tg) {
+    const backBtn = tg.BackButton;
+    const mainBtn = tg.MainButton;
+
+    backBtn.onClick(() => AppRouter.back());
+    mainBtn.onClick(() => tg.close());
+  }
+
+  // стартуем с профиля
+  AppRouter.apply();
+
+  AppProfile.loadProfile();
+  AppNavigation.initTabs();
+  AppTarot.initTarotControls();
+  AppReferrals.initReferralSection();
+  AppSubs.initSubsControls();
+  AppSubs.initBuySubButton();
+  AppProfile.initHistorySection();
+  AppProfile.initTasksSection();
+  AppProfile.initRefLinkSection();
+  AppProfile.initRefBonusBlock();
+  AppMore.initMore();
+  AppRitualTip.initRitualTip();
+  AppHoroscope.initHoroscope();
+});
