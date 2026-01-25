@@ -12,6 +12,8 @@ window.AppReferrals = (() => {
     if (!refLinkCard || !refScreen) return;
 
     refLinkCard.addEventListener('click', () => {
+      AppRouter.go('referral');   // ← добавили
+
       if (profileHeader) profileHeader.style.display = 'none';
 
       document.querySelectorAll(

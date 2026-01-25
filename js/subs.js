@@ -61,6 +61,8 @@ window.AppSubs = (() => {
     if (!buySubCard) return;
 
     buySubCard.addEventListener('click', () => {
+      AppRouter.go('buy_messages');   // ← новый вызов роутера
+
       const profileHeader = document.querySelector('.profile-header');
 
       AppNavigation.switchTab('profile', 'subscreen');

@@ -118,18 +118,42 @@ window.AppNavigation = (() => {
     }
   }
 
+  function showBottomNav() {
+    const nav = document.querySelector('.bottom-nav');
+    if (nav) nav.style.display = 'flex';
+  }
+
+  function hideBottomNav() {
+    const nav = document.querySelector('.bottom-nav');
+    if (nav) nav.style.display = 'none';
+  }
+
   function initTabs() {
     const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
     navButtons.forEach(btn => {
       const tab = btn.getAttribute('data-tab');
       if (!tab) return;
       // при клике по нижней навигации всегда открываем главный экран вкладки
-      btn.addEventListener('click', () => switchTab(tab, 'main'));
-    });
+      btn.addEventListener('click', () => {
+        // при клике по нижней навигации идём через роутер
+        if (tab === 'profile') {
+          AppRouter.stack = ['profile'];
+        } else if (tab === 'rituals') {
+          AppRouter.stack = ['rituals'];
+        } else if (tab === 'more') {
+          AppRouter.stack = ['more'];
+        } else if (tab === 'tarot') {
+          AppRouter.stack = ['tarot'];
+        }
+        AppRouter.apply();
+      });
+    });     // ← НОВАЯ строка, закрывает forEach
   }
-
+  
   return {
     switchTab,
     initTabs,
+    showBottomNav,
+    hideBottomNav,
   };
 })();

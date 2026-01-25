@@ -76,7 +76,10 @@ window.AppRitualTip = (() => {
     updateMainTimeLabel();
 
     // открыть настройки из «Ритуалов»
-    tipLink.addEventListener('click', openTipSettings);
+    tipLink.addEventListener('click', () => {
+      AppRouter.go('ritual_tip');  // чтобы Back вел назад в «Ритуалы»
+      openTipSettings();
+    });
 
     // переключатель
     tipEnabledCheckbox.addEventListener('change', () => {
@@ -150,7 +153,9 @@ window.AppRitualTip = (() => {
         // if (AppCore.tg) AppCore.tg.sendData(JSON.stringify(payload));
 
         updateMainTimeLabel();
-        AppNavigation.switchTab('rituals');
+
+        AppRouter.stack = ['rituals'];  // возвращаемся на главный экран "Ритуалы"
+        AppRouter.apply();
       });
     }
   }

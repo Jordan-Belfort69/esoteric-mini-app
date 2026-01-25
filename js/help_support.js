@@ -47,6 +47,8 @@ window.AppHelpSupport = (() => {
     if (!helpLinkCard || !helpScreen) return;
 
     helpLinkCard.addEventListener('click', () => {
+      AppRouter.go('help');   // ← добавили
+
       if (profileHeader) profileHeader.style.display = 'none';
 
       document.querySelectorAll(

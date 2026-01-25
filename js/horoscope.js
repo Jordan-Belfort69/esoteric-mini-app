@@ -57,7 +57,10 @@ window.AppHoroscope = (() => {
       screen.style.display = 'block';
     }
 
-    link.addEventListener('click', openHoroscopeScreen);
+    link.addEventListener('click', () => {
+      AppRouter.go('horoscope');   // чтобы Back вел назад в «Ритуалы»
+      openHoroscopeScreen();
+    });
 
     zodiacButtons.forEach(btn => {
       btn.addEventListener('click', () => {

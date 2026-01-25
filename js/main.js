@@ -41,6 +41,7 @@ const AppRouter = {
     }
 
     // 2) показываем/прячем внутренние секции
+    /*
     AppProfile.showMain(screen === "profile");
     AppSubs.showBuyMessages(screen === "buy_messages");
     AppProfile.showHistory(screen === "history");
@@ -52,7 +53,7 @@ const AppRouter = {
     AppHoroscope.showHoroscope(screen === "horoscope");
 
     AppHelpSupport.showHelp(screen === "help");
-
+    */
     // 3) нижнее меню
     const needBottomNav = ["profile","rituals","more"].includes(screen);
     if (needBottomNav) {
