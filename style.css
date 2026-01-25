@@ -837,6 +837,12 @@
   );
 }
 
+.ref-bonus-img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
 .ref-bonus-inner {
   display: flex;
   align-items: flex-start;
