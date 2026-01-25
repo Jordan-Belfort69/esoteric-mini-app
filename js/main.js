@@ -1,6 +1,5 @@
 // ===== ВРЕМЕННЫЙ MONOLITH main.js (будем разрезать на модули) =====
 
-
 // ===== РОУТЕР ЭКРАНОВ =====
 // profile / buy / history / tasks / task1 / task2 / referral /
 // tarot / rituals / tip / horoscope / more / help
@@ -55,6 +54,57 @@ const AppRouter = {
       AppNavigation.switchTab("more");
     }
 
+    // 1.1 Внутренние экраны профиля и покупки
+    const profileInnerIds = [
+      "profile-history",
+      "profile-tasks",
+      "profile-task1-card",
+      "profile-task2-card",
+      "task1-details",
+      "task2-details",
+      "profile-ref",
+      "profile-help",
+      "profile-help-contact",
+    ];
+    profileInnerIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = "none";
+    });
+
+    const subsSection = document.getElementById("subs-section");
+    if (subsSection) subsSection.style.display = "none";
+
+    if (screen === "buy") {
+      if (subsSection) subsSection.style.display = "block";
+    } else if (screen === "history") {
+      const h = document.getElementById("profile-history");
+      if (h) h.style.display = "block";
+      document.querySelectorAll(".history-item-card").forEach(card => {
+        card.style.display = "block";
+      });
+    } else if (screen === "tasks") {
+      const t = document.getElementById("profile-tasks");
+      const c1 = document.getElementById("profile-task1-card");
+      const c2 = document.getElementById("profile-task2-card");
+      if (t) t.style.display = "block";
+      if (c1) c1.style.display = "block";
+      if (c2) c2.style.display = "block";
+    } else if (screen === "task1") {
+      const d = document.getElementById("task1-details");
+      if (d) d.style.display = "block";
+    } else if (screen === "task2") {
+      const d = document.getElementById("task2-details");
+      if (d) d.style.display = "block";
+    } else if (screen === "referral") {
+      const r = document.getElementById("profile-ref");
+      if (r) r.style.display = "block";
+    } else if (screen === "help") {
+      const h = document.getElementById("profile-help");
+      const c = document.getElementById("profile-help-contact");
+      if (h) h.style.display = "block";
+      if (c) c.style.display = "block";
+    }
+
     // 2) нижнее меню
     const needBottomNav = ["profile","tarot","rituals","more"].includes(screen);
     if (needBottomNav) {
@@ -71,18 +121,16 @@ const AppRouter = {
     const mainBtn = tg.MainButton;
 
     if (screen === "profile") {
-      // Профиль: только MainButton "Закрыть"
+      // На главном профиле не показываем MainButton
       backBtn.hide();
-      mainBtn.setText("Закрыть");
-      mainBtn.show();
+      mainBtn.hide();
     } else {
-      // Внутренние экраны: только BackButton
+      // На внутренних экранах только BackButton
       mainBtn.hide();
       backBtn.show();
     }
   }
 };
-
 
 document.addEventListener("DOMContentLoaded", () => {
   AppCore.initTelegram();
@@ -92,10 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const backBtn = tg.BackButton;
     const mainBtn = tg.MainButton;
 
-    // Единственный обработчик "Назад" — дергает роутер
     backBtn.onClick(() => AppRouter.back());
-
-    // Единственный обработчик "Закрыть"
     mainBtn.onClick(() => tg.close());
   }
 

@@ -44,16 +44,25 @@ window.AppRitualTip = (() => {
     }
 
     function openTipSettings() {
-      // никаких манипуляций с profile / tarot / subs / rituals здесь
-      // только управление собственными экранами «Совета дня»
+      const ritualsSection = document.getElementById('rituals-section');
+
+      if (ritualsSection) ritualsSection.style.display = 'none';
       if (timeScreen) timeScreen.style.display = 'none';
 
-      tipEnabledCheckbox.checked = ritualTipState.enabled;
-      tipExtra.style.display = ritualTipState.enabled ? 'block' : 'none';
-      tipTzLabel.textContent = ritualTipState.timezone;
-      tipTimeBtn.textContent = ritualTipState.time || 'Выбрать';
+      if (tipEnabledCheckbox) {
+        tipEnabledCheckbox.checked = ritualTipState.enabled;
+      }
+      if (tipExtra) {
+        tipExtra.style.display = ritualTipState.enabled ? 'block' : 'none';
+      }
+      if (tipTzLabel) {
+        tipTzLabel.textContent = ritualTipState.timezone;
+      }
+      if (tipTimeBtn) {
+        tipTimeBtn.textContent = ritualTipState.time || 'Выбрать';
+      }
 
-      tipSettings.style.display = 'block';
+      if (tipSettings) tipSettings.style.display = 'block';
     }
 
     updateMainTimeLabel();

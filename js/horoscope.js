@@ -21,10 +21,11 @@ window.AppHoroscope = (() => {
     }
 
     function openHoroscopeScreen() {
-      // не трогаем profile / tarot / subs / rituals, этим управляет AppRouter/AppNavigation
+      const ritualsSection = document.getElementById('rituals-section');
       const tipSettings = document.getElementById('ritual-tip-settings');
       const timeScreen = document.getElementById('ritual-tip-time-screen');
 
+      if (ritualsSection) ritualsSection.style.display = 'none';
       if (tipSettings) tipSettings.style.display = 'none';
       if (timeScreen) timeScreen.style.display = 'none';
 
