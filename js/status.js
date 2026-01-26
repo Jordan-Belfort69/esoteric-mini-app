@@ -12,6 +12,9 @@ window.StatusUI = (() => {
       color_from: "#4b5563",
       color_to: "#6b7280",
       icon: "img/status/spark.png",
+      // визуальный диапазон шкалы (по умолчанию = min_xp/max_xp)
+      bar_min: 0,
+      bar_max: 100,
     },
     {
       level: 2,
@@ -22,6 +25,8 @@ window.StatusUI = (() => {
       color_from: "#4f46e5",
       color_to: "#6366f1",
       icon: "img/status/seeker.png",
+      bar_min: 100,
+      bar_max: 300,
     },
     {
       level: 3,
@@ -32,6 +37,9 @@ window.StatusUI = (() => {
       color_from: "#7c3aed",
       color_to: "#8b5cf6",
       icon: "img/status/initiated.png",
+      // здесь как ты хотел: прогресс считаем от 300 до 700
+      bar_min: 300,
+      bar_max: 700,
     },
     {
       level: 4,
@@ -42,6 +50,8 @@ window.StatusUI = (() => {
       color_from: "#a855f7",  // более розовый
       color_to: "#ec4899",    // уходит в малиновый
       icon: "img/status/keeper.png",
+      bar_min: 700,
+      bar_max: 1200,
     },
     {
       level: 5,
@@ -52,6 +62,8 @@ window.StatusUI = (() => {
       color_from: "#22c1c3",
       color_to: "#0ea5e9",
       icon: "img/status/moon_priestess.png",
+      bar_min: 1200,
+      bar_max: 2000,
     },
     {
       level: 6,
@@ -62,6 +74,8 @@ window.StatusUI = (() => {
       color_from: "#ec4899",
       color_to: "#f97316",
       icon: "img/status/circle_leader.png",
+      bar_min: 2000,
+      bar_max: 3000,
     },
     {
       level: 7,
@@ -72,6 +86,9 @@ window.StatusUI = (() => {
       color_from: "#eab308",
       color_to: "#fbbf24",
       icon: "img/status/high_mystery.png",
+      // для последнего можно считать от 3000 до фактического xp
+      bar_min: 3000,
+      bar_max: 4000, // просто заглушка, можно потом подправить
     },
   ];
 
@@ -88,6 +105,22 @@ window.StatusUI = (() => {
   function getNextLevel(curLevel) {
     if (!curLevel) return null;
     return STATUS_LEVELS.find(l => l.level === curLevel.level + 1) || null;
+  }
+
+  // НОРМАЛИЗАЦИЯ ДЛЯ ШКАЛЫ
+  function computeBarPercent(xp, level) {
+    const min = level.bar_min ?? level.min_xp;
+    // если bar_max не задан и max_xp нет (последний уровень) — берём текущий xp + 1, чтобы не делить на 0
+    const max = level.bar_max ?? level.max_xp ?? (xp + 1);
+
+    let inside = xp - min;
+    if (inside < 0) inside = 0;
+
+    let span = max - min;
+    if (span <= 0) span = 1;
+
+    const percent = Math.round((inside / span) * 100);
+    return Math.max(0, Math.min(100, percent));
   }
 
   function updateFromProfile(profile) {
@@ -114,20 +147,8 @@ window.StatusUI = (() => {
       heroTitle.textContent = cur.name;
     }
 
-    // прогресс от начала текущего уровня до порога следующего
-    const levelMin = cur.min_xp;
-    const levelMax = next ? next.min_xp : (cur.max_xp ?? profileStatus.xp);
-
-    let xpInLevel = profileStatus.xp - levelMin;
-    if (xpInLevel < 0) xpInLevel = 0;
-
-    let xpRange = levelMax - levelMin;
-    if (xpRange <= 0) xpRange = 1;
-
-    const percent = Math.max(
-      0,
-      Math.min(100, Math.round((xpInLevel / xpRange) * 100))
-    );
+    // процент для шкалы по визуальному диапазону bar_min/bar_max
+    const percent = computeBarPercent(profileStatus.xp, cur);
 
     if (currentLine) {
       currentLine.textContent = `Сейчас: ${cur.name} · ${profileStatus.xp} очков`;
