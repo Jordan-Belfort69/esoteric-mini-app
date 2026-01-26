@@ -94,7 +94,7 @@ window.StatusUI = (() => {
 
   // временные данные профиля (потом заменишь на реальные)
   let profileStatus = {
-    xp: 350,
+    xp: 500,
     status_code: "initiated", // Посвящённая
   };
 
