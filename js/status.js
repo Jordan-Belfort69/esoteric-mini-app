@@ -114,12 +114,14 @@ window.StatusUI = (() => {
       heroTitle.textContent = cur.name;
     }
 
-    // прогресс в рамках уровня
-    let xpInLevel = profileStatus.xp - cur.min_xp;
+    // прогресс от начала текущего уровня до порога следующего
+    const levelMin = cur.min_xp;
+    const levelMax = next ? next.min_xp : (cur.max_xp ?? profileStatus.xp);
+
+    let xpInLevel = profileStatus.xp - levelMin;
     if (xpInLevel < 0) xpInLevel = 0;
 
-    // без +1, чистый диапазон
-    let xpRange = (cur.max_xp !== null ? cur.max_xp : profileStatus.xp) - cur.min_xp;
+    let xpRange = levelMax - levelMin;
     if (xpRange <= 0) xpRange = 1;
 
     const percent = Math.max(
