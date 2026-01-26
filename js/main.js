@@ -129,9 +129,12 @@ const AppRouter = {
     const tarotSection = document.getElementById("tarot-section");
     const tarotSettings = document.getElementById("tarot-settings");
     const tarotVoiceSettings = document.getElementById("tarot-voice-settings");
+    const tarotOwnSettings = document.getElementById("tarot-own-settings");
+
     if (tarotSection) tarotSection.style.display = "none";
     if (tarotSettings) tarotSettings.style.display = "none";
     if (tarotVoiceSettings) tarotVoiceSettings.style.display = "none";
+    if (tarotOwnSettings) tarotOwnSettings.style.display = "none";
 
     if (screen === "tarot") {
       if (tarotSection) tarotSection.style.display = "block";

@@ -10,20 +10,36 @@ window.AppTarot = (() => {
     const tarotSection = document.getElementById('tarot-section');
     const tarotSettings = document.getElementById('tarot-settings');
     const tarotVoiceSettings = document.getElementById('tarot-voice-settings');
+    const tarotOwnSettings = document.getElementById('tarot-own-settings');
 
     if (tarotSection) tarotSection.style.display = 'none';
     if (tarotSettings) tarotSettings.style.display = 'block';
     if (tarotVoiceSettings) tarotVoiceSettings.style.display = 'none';
+    if (tarotOwnSettings) tarotOwnSettings.style.display = 'none';
   }
 
   function showTarotVoiceSettings() {
     const tarotSection = document.getElementById('tarot-section');
     const tarotSettings = document.getElementById('tarot-settings');
     const tarotVoiceSettings = document.getElementById('tarot-voice-settings');
+    const tarotOwnSettings = document.getElementById('tarot-own-settings');
 
     if (tarotSection) tarotSection.style.display = 'none';
     if (tarotSettings) tarotSettings.style.display = 'none';
     if (tarotVoiceSettings) tarotVoiceSettings.style.display = 'block';
+    if (tarotOwnSettings) tarotOwnSettings.style.display = 'none';
+  }
+
+  function showTarotOwnSettings() {
+    const tarotSection = document.getElementById('tarot-section');
+    const tarotSettings = document.getElementById('tarot-settings');
+    const tarotVoiceSettings = document.getElementById('tarot-voice-settings');
+    const tarotOwnSettings = document.getElementById('tarot-own-settings');
+
+    if (tarotSection) tarotSection.style.display = 'none';
+    if (tarotSettings) tarotSettings.style.display = 'none';
+    if (tarotVoiceSettings) tarotVoiceSettings.style.display = 'none';
+    if (tarotOwnSettings) tarotOwnSettings.style.display = 'block';
   }
 
   function initTarotControls() {
@@ -33,7 +49,7 @@ window.AppTarot = (() => {
     const tarotOpenLink = document.getElementById('tarot-open-link');
     if (tarotOpenLink) {
       tarotOpenLink.addEventListener('click', () => {
-        AppRouter.go('tarot-inner');   // роутер переведёт в внутренний экран
+        AppRouter.go('tarot-inner');   // роутер переведёт во внутренний экран
         showTarotSettings();           // показываем нужный подэкран
       });
     }
@@ -44,6 +60,15 @@ window.AppTarot = (() => {
       tarotVoiceLink.addEventListener('click', () => {
         AppRouter.go('tarot-inner');
         showTarotVoiceSettings();
+      });
+    }
+
+    // кнопка "🧙‍♀️ Таро со своими картами"
+    const tarotOwnLink = document.getElementById('tarot-own-link');
+    if (tarotOwnLink) {
+      tarotOwnLink.addEventListener('click', () => {
+        AppRouter.go('tarot-inner');
+        showTarotOwnSettings();
       });
     }
 
@@ -100,6 +125,26 @@ window.AppTarot = (() => {
 
         const payload = {
           type: 'tarot_voice',
+          ts: Date.now(),
+        };
+
+        console.log('SEND DATA:', payload);
+        tg.sendData(JSON.stringify(payload));
+        tg.close();
+      });
+    }
+
+    // отправка фото расклада (свои карты)
+    const ownPhotoBtn = document.getElementById('tarot-own-send-photo-btn');
+    if (ownPhotoBtn) {
+      ownPhotoBtn.addEventListener('click', () => {
+        if (!tg) {
+          alert('Эта кнопка работает только внутри Telegram Mini App');
+          return;
+        }
+
+        const payload = {
+          type: 'tarot_own_photo',
           ts: Date.now(),
         };
 
