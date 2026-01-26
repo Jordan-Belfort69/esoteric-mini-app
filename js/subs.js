@@ -1,6 +1,18 @@
 // ===== МОДУЛЬ: ПОКУПКИ СООБЩЕНИЙ =====
 
 window.AppSubs = (() => {
+  // тестовые промокоды (потом заменишь на реальные с бэкенда)
+  const PROMO_CODES = {
+    'MAGIC10': {
+      discount: '10%',
+      text: 'Промокод MAGIC10 даёт скидку 10% на выбранный пакет.',
+    },
+    'FRIEND20': {
+      discount: '20%',
+      text: 'Промокод FRIEND20 — подарок за приглашение подруги: скидка 20%.',
+    },
+  };
+
   function initSubsControls() {
     // выбор количества сообщений
     const optionRows = document.querySelectorAll('.subs-option-row');
@@ -29,6 +41,31 @@ window.AppSubs = (() => {
     const buyBtn = document.getElementById('subs-buy-btn');
     const emailInput = document.getElementById('subs-email-input');
 
+    // промокод
+    const promoInput = document.getElementById('subs-promo-input');
+    const promoMessage = document.getElementById('subs-promo-message');
+
+    if (promoInput && promoMessage) {
+      promoInput.addEventListener('input', () => {
+        const code = promoInput.value.trim().toUpperCase();
+
+        if (!code) {
+          promoMessage.textContent = '';
+          promoMessage.className = 'subs-promo-message';
+          return;
+        }
+
+        const promo = PROMO_CODES[code];
+        if (promo) {
+          promoMessage.textContent = promo.text;
+          promoMessage.className = 'subs-promo-message subs-promo-success';
+        } else {
+          promoMessage.textContent = 'Такого промокода нет или он больше не действует.';
+          promoMessage.className = 'subs-promo-message subs-promo-error';
+        }
+      });
+    }
+
     if (buyBtn) {
       buyBtn.addEventListener('click', () => {
         const activeOption = document.querySelector('.subs-option-row-active');
@@ -37,9 +74,11 @@ window.AppSubs = (() => {
         const messages = activeOption ? activeOption.getAttribute('data-messages') : null;
         const method = activePay ? activePay.getAttribute('data-method') : null;
         const email = emailInput ? emailInput.value.trim() : '';
+        const promoCode = promoInput ? promoInput.value.trim().toUpperCase() : '';
 
-        console.log('BUY CLICK', { messages, method, email });
+        console.log('BUY CLICK', { messages, method, email, promoCode });
         // сюда позже добавишь вызов бекенда / оплаты
+        // и будешь учитывать promoCode на сервере
       });
     }
 
