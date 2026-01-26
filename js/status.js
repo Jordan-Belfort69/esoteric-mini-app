@@ -39,8 +39,8 @@ window.StatusUI = (() => {
       name: "Хранительница карт",
       min_xp: 700,
       max_xp: 1199,
-      color_from: "#7c3aed",
-      color_to: "#a855f7",
+      color_from: "#a855f7",  // более розовый
+      color_to: "#ec4899",    // уходит в малиновый
       icon: "img/status/keeper.png",
     },
     {

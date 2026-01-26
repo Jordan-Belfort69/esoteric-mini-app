@@ -625,6 +625,32 @@
   color: #a7f3d0;
 }
 
+/* Кнопка "Прогресс статуса" — фиолетовый градиент */
+.card-link-status {
+  background: transparent;
+}
+
+.card-link-status .card-link-inner {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-radius: 12px;
+}
+
+.card-link-status .card-link-text {
+  color: #f9fafb;
+}
+
+.card-link-status .card-link-emoji {
+  color: #ede9fe;
+}
+
+.card-link-status .card-link-arrow {
+  color: #e0e7ff;
+}
+
+.card-link-status .card-link-inner:active {
+  transform: translateY(1px);
+  opacity: 0.97;
+}
 
 /* ===== ИСТОРИЯ ЗАПРОСОВ ===== */
 .history-emoji {
