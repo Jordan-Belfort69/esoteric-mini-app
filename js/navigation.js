@@ -112,7 +112,7 @@ window.AppNavigation = (() => {
         // при подэкранах профиля верхние блоки скрыты
         document.querySelectorAll(
           '#profile-summary, #profile-activity, #profile-ref-bonus, ' +
-          '#profile-buy-sub, #profile-history-link, #profile-tasks-link, #profile-ref-link'
+          '#profile-buy-sub, #profile-status-link, #profile-history-link, #profile-tasks-link, #profile-ref-link'
         ).forEach(c => (c.style.display = 'none'));
       }
     }
