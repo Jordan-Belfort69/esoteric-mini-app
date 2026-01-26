@@ -202,7 +202,10 @@ window.StatusUI = (() => {
         div.classList.add("status-badge-current");
       } else if (next && level.code === next.code) {
         div.classList.add("status-badge-next");
-      } else if (level.level > cur.level) {
+      }
+
+      // все уровни выше текущего — затемнены
+      if (level.level > cur.level) {
         div.classList.add("status-badge-locked");
       }
 
@@ -224,20 +227,9 @@ window.StatusUI = (() => {
         : `${level.min_xp}+ очков`;
       meta.textContent = rangeText;
 
-      const right = document.createElement("div");
-      right.style.fontSize = "11px";
-      right.style.marginLeft = "8px";
-
-      if (level.code === cur.code) {
-        right.textContent = "Текущий уровень";
-      } else if (next && level.code === next.code) {
-        right.textContent = "Следующий";
-      }
-
       div.appendChild(icon);
       div.appendChild(textWrap);
       div.appendChild(meta);
-      div.appendChild(right);
 
       list.appendChild(div);
     });
