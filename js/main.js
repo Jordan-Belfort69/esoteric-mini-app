@@ -16,14 +16,6 @@ const AppRouter = {
   back() {
     const cur = this.current();
 
-    // Задание 1 / 2 → назад в список заданий
-    if (cur === "task1" || cur === "task2") {
-      this.stack.pop();          // убрать task*
-      this.stack.push("tasks");  // гарантируем tasks сверху
-      this.apply();
-      return;
-    }
-
     // Внутренний экран Таро → назад в корневой Таро
     if (cur === "tarot-inner") {
       this.stack = ["tarot"];
@@ -59,7 +51,7 @@ const AppRouter = {
     }
 
     // 1) переключаем основной таб
-    if (["profile","buy","buy-confirm","history","tasks","task1","task2","referral","status"].includes(screen)) {
+    if (["profile","buy","buy-confirm","history","tasks","referral","status"].includes(screen)) {
       AppNavigation.switchTab("profile", screen === "profile" ? "main" : "subscreen");
     } else if (screen === "tarot" || screen === "tarot-inner") {
       // для внутренних экранов Таро всё равно держим вкладку "Таро" активной
@@ -74,10 +66,8 @@ const AppRouter = {
     const profileInnerIds = [
       "profile-history",
       "profile-tasks",
-      "profile-task1-card",
-      "profile-task2-card",
-      "task1-details",
-      "task2-details",
+      "tasks-categories",
+      "tasks-list",
       "profile-ref",
       "profile-help",
       "profile-help-contact",
@@ -108,17 +98,11 @@ const AppRouter = {
       });
     } else if (screen === "tasks") {
       const t = document.getElementById("profile-tasks");
-      const c1 = document.getElementById("profile-task1-card");
-      const c2 = document.getElementById("profile-task2-card");
+      const cats = document.getElementById("tasks-categories");
+      const list = document.getElementById("tasks-list");
       if (t) t.style.display = "block";
-      if (c1) c1.style.display = "block";
-      if (c2) c2.style.display = "block";
-    } else if (screen === "task1") {
-      const d = document.getElementById("task1-details");
-      if (d) d.style.display = "block";
-    } else if (screen === "task2") {
-      const d = document.getElementById("task2-details");
-      if (d) d.style.display = "block";
+      if (cats) cats.style.display = "block";
+      if (list) list.style.display = "none"; // при входе показываем только список разделов
     } else if (screen === "referral") {
       const r = document.getElementById("profile-ref");
       if (r) r.style.display = "block";
@@ -208,4 +192,5 @@ document.addEventListener("DOMContentLoaded", () => {
   AppRitualTip.initRitualTip();
   AppHoroscope.initHoroscope();
   StatusUI.initStatusScreen();
+  AppTasks.initTasksUI();
 });

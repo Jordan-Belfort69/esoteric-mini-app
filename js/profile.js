@@ -59,37 +59,11 @@ window.AppProfile = (() => {
 
   function initTasksSection() {
     const tasksLink = document.getElementById('profile-tasks-link');
-    const tasksHeader = document.getElementById('profile-tasks');
-    const task1Details = document.getElementById('task1-details');
-    const task2Details = document.getElementById('task2-details');
+    if (!tasksLink) return;
 
-    if (!tasksLink || !tasksHeader) return;
-
-    // переход в экран "Задания"
+    // Переход в экран "Задания" (шапка + список разделов)
     tasksLink.addEventListener('click', () => {
       AppRouter.go('tasks');
-    });
-
-    // открытие конкретного задания
-    const taskButtons = document.querySelectorAll('.tasks-open-btn');
-    taskButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const taskId = btn.getAttribute('data-task');
-
-        if (taskId === '1') {
-          AppRouter.go('task1');
-        } else if (taskId === '2') {
-          AppRouter.go('task2');
-        }
-      });
-    });
-
-    const claimButtons = document.querySelectorAll('.tasks-claim-btn');
-    claimButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const taskId = btn.getAttribute('data-task');
-        alert('❌ Условие: Оставить отзыв о работе с проектом не выполнено! (task ' + taskId + ')');
-      });
     });
   }
 
