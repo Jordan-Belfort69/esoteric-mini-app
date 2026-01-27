@@ -856,15 +856,14 @@
   margin-top: 4px;
 }
 
-.promocode-badge {
-  margin-left: 6px;
-  padding: 1px 6px;
-  border-radius: 999px;
-  font-size: 11px;
-  background: rgba(96, 165, 250, 0.2);
-  color: #bfdbfe;
+/* строка заголовка промокода */
+.promocode-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
+/* код промокода */
 .promocode-code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 13px;
@@ -874,10 +873,24 @@
   border: 1px solid #374151;
 }
 
+/* срок действия */
 .promocode-expire {
   margin-top: 4px;
-  font-size: 12px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.promocode-expire-label {
   color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.promocode-expire-date {
+  color: #e5e7eb;
+  font-variant-numeric: tabular-nums;
 }
 
 .history-read-btn {

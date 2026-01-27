@@ -5,15 +5,13 @@ window.PromoUI = (() => {
   let userPromocodes = [
     {
       code: 'WELCOME5',
-      desc: 'Скидка 5% на покупку сообщений',
       discount: 5,
       expires_at: null,
     },
     {
       code: 'TAROT10',
-      desc: 'Скидка 10% на покупку сообщений',
       discount: 10,
-      expires_at: 'до 31.03.2026',
+      expires_at: '31.03.2026',
     },
   ];
 
@@ -36,13 +34,8 @@ window.PromoUI = (() => {
       item.className = 'history-item';
 
       item.innerHTML = `
-        <div class="history-question">
-          🎁 ${promo.desc}
-          ${
-            promo.discount
-              ? `<span class="promocode-badge">-${promo.discount}%</span>`
-              : ''
-          }
+        <div class="history-question promocode-title-row">
+          <span>🎁 Скидка ${promo.discount}% на покупку сообщений</span>
         </div>
         <div class="promocode-row">
           <span class="promocode-code">${promo.code}</span>
@@ -52,9 +45,10 @@ window.PromoUI = (() => {
         </div>
         ${
           promo.expires_at
-            ? `<div class="history-answer-preview promocode-expire">
-                 Действует ${promo.expires_at}
-               </div>`
+            ? `<div class="promocode-expire">
+                <span class="promocode-expire-label">ДЕЙСТВУЕТ ДО</span>
+                <span class="promocode-expire-date">${promo.expires_at}</span>
+              </div>`
             : ''
         }
       `;
