@@ -34,8 +34,8 @@ window.PromoUI = (() => {
       item.className = 'history-item';
 
       item.innerHTML = `
-        <div class="history-question promocode-title-row">
-          <span>🎁 Скидка ${promo.discount}% на покупку сообщений</span>
+        <div class="history-question">
+          🎁 Скидка ${promo.discount}% на покупку сообщений
         </div>
         <div class="promocode-row">
           <span class="promocode-code">${promo.code}</span>
@@ -46,8 +46,7 @@ window.PromoUI = (() => {
         ${
           promo.expires_at
             ? `<div class="promocode-expire">
-                <span class="promocode-expire-label">ДЕЙСТВУЕТ ДО</span>
-                <span class="promocode-expire-date">${promo.expires_at}</span>
+                ⏳ Действует до ${promo.expires_at}
               </div>`
             : ''
         }

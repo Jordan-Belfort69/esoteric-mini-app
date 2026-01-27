@@ -877,20 +877,8 @@
 .promocode-expire {
   margin-top: 4px;
   font-size: 11px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.promocode-expire-label {
   color: #9ca3af;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.promocode-expire-date {
-  color: #e5e7eb;
-  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
 .history-read-btn {
