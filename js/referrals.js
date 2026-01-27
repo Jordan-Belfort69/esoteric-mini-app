@@ -12,7 +12,7 @@ window.AppReferrals = (() => {
     if (!refLinkCard || !refScreen) return;
 
     refLinkCard.addEventListener('click', () => {
-      AppRouter.go('referral');   // ← добавили
+      AppRouter.go('referral');
 
       if (profileHeader) profileHeader.style.display = 'none';
 
@@ -34,6 +34,27 @@ window.AppReferrals = (() => {
     if (inviteBtn) {
       inviteBtn.addEventListener('click', () => {
         console.log('Invite friends clicked');
+      });
+    }
+
+    // --- Кнопка "Копировать" ссылку ---
+    const refCopyBtn = document.getElementById('ref-copy-btn');
+    const refLinkInput = document.getElementById('ref-link-input');
+
+    if (refCopyBtn && refLinkInput) {
+      refCopyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(refLinkInput.value);
+
+          const originalText = refCopyBtn.textContent;
+          refCopyBtn.textContent = 'Скопировано';
+
+          setTimeout(() => {
+            refCopyBtn.textContent = originalText;
+          }, 1500);
+        } catch (err) {
+          console.error('Не удалось скопировать ссылку', err);
+        }
       });
     }
   }
