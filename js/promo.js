@@ -46,9 +46,9 @@ window.PromoUI = (() => {
         ${
           promo.expires_at
             ? `<div class="promocode-expire">
-                ⏳ Действует до ${promo.expires_at}
+                <span class="promocode-expire-full">Действует до ${promo.expires_at}</span>
               </div>`
-            : ''
+          : ''
         }
       `;
 

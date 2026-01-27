@@ -877,7 +877,13 @@
 .promocode-expire {
   margin-top: 4px;
   font-size: 11px;
-  color: #9ca3af;
+}
+
+.promocode-expire-full {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   letter-spacing: 0.02em;
 }
 
