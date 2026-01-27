@@ -1,398 +1,387 @@
-    /* ===== БАЗОВЫЕ НАСТРОЙКИ ===== */
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f1115;
-      color: #fff;
-    }
-
-        /* Тема по умолчанию — тёмная */
-    body.theme-dark {
-      background: #0f1115;
-      color: #ffffff;
-    }
-
-    body.theme-light {
-      background: #f3f4f6;
-      color: #020617;
-    }
-
-    /* Тумблер темы в шапке */
-    .theme-toggle {
-      position: relative;
-      width: 52px;
-      height: 26px;
-      border-radius: 999px;
-      background: #020617;
-      border: 1px solid #374151;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 4px;
-      cursor: pointer;
-    }
-
-    .theme-icon {
-      font-size: 12px;
-      line-height: 1;
-      opacity: 0.5;
-      z-index: 2;
-    }
-
-    .theme-toggle-thumb {
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: #f9fafb;
-      top: 2px;
-      left: 2px;
-      transition: transform 0.2s ease-out;
-    }
-
-    /* Состояние светлой темы */
-    body.theme-light .theme-toggle {
-      background: #e5e7eb;
-      border-color: #cbd5f5;
-    }
-
-    body.theme-light .theme-toggle-thumb {
-      transform: translateX(24px);
-    }
-
-    body.theme-dark .theme-icon-moon,
-    body.theme-light .theme-icon-sun {
-      opacity: 1;
-    }
-
-        /* Общий reset для всех кнопок */
-    button {
-      font-family: inherit;
-      font-size: inherit;
-      border: none;
-      padding: 0;
-      background: none;
-      color: inherit;
-    }
-
-    #app {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 16px 16px 72px;  /* как было изначально */
-      box-sizing: border-box;
-    }
-
-
-    /* ===== ШАПКА ПРОФИЛЯ ===== */
-    .profile-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-
-    .profile-main {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-
-    .avatar-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #262b35;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-    }
-
-
-    .profile-name {
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-
-    .profile-username {
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-
-    .tier-pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      background: #1f2937;
-    }
-
-
-    /* ===== ОБЩИЙ СТИЛЬ КАРТОЧЕК ===== */
-    .card {
-      background: #111827;
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 12px;
-    }
-
-
-    .card-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-
-    .card-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      padding: 4px 0;
-      color: #e5e7eb;
-    }
-
-
-    .card-row span:last-child {
-      color: #f9fafb;
-      font-weight: 500;
-    }
-
-    #summary-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 13px;
-    }
-
-    /* иконка уровня очень компактная */
-    .summary-status-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    /* текст уровня */
-    .summary-status-name {
-      max-width: 120px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* ===== НИЖНЕЕ МЕНЮ ===== */
-    .bottom-nav {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 8px;              /* было 0 → слегка подняли на 6px */
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 8px 12px 12px;   /* как в самом начале */
-      display: flex;
-      gap: 8px;
-      background: #020617ee;
-      backdrop-filter: blur(10px);
-    }
-
-    .bottom-nav::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -8px;             /* ровно столько же, сколько bottom */
-      height: 8px;
-      background: #020617ee;
-    }
-
-
-    .nav-btn {
-      flex: 1;
-      border-radius: 999px;
-      border: none;
-      padding: 10px 0;
-      font-size: 13px;
-      color: #e5e7eb;
-      background: #111827;
-    }
-
-
-    .nav-btn-active {
-      background: #1d4ed8;
-      color: #f9fafb;
-      font-weight: 600;
-    }
-
-
-    /* ===== ТАРО: РАСКЛАД, ПИЛЛЫ, КНОПКА ===== */
-    .tarot-section {
-      margin-top: 12px;
-    }
-
-
-    .tarot-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-
-    .tarot-subtitle {
-      font-size: 13px;
-      color: #9ca3af;
-      margin: 10px 0 4px;
-    }
-
-
-        .horoscope-intro {
-      text-align: center;
-      line-height: 1.4;
-    }
-
-
-    .horoscope-section-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin: 8px 0 6px;
-    }
-
-
-    .horoscope-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px 8px;
-    }
-
-
-    .pill-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 4px;
-    }
-
-
-    .pill-btn {
-      border-radius: 999px;
-      border: 1px solid #374151;
-      background: #020617;
-      color: #e5e7eb;
-      font-size: 13px;
-      padding: 6px 10px;
-    }
-
-
-    .pill-btn-active {
-      background: #1d4ed8;
-      border-color: #2563eb;
-      color: #f9fafb;
-    }
-
-
-        /* Более компактные пиллы для гороскопа */
-    .horoscope-grid .pill-btn {
-      padding: 5px 8px;    /* было 6px 10px */
-      font-size: 12px;     /* было 13px */
-    }
-
-        /* Все сферы гороскопа: фиксированная высота, ровный текст */
-    .horoscope-scope-btn {
-      height: 32px;              /* подгони при необходимости */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 10px;           /* чтобы текст не лип */
-      white-space: nowrap;
-    }
-
-    .pill-empty {
-      visibility: hidden;      /* ячейка занимает место, но невидима */
-      pointer-events: none;    /* по ней нельзя кликнуть */
-    }
-
-    .primary-btn {
-      width: 100%;
-      margin-top: 12px;
-      border-radius: 999px;
-      border: none;
-      padding: 10px 0;
-      font-size: 14px;
-      font-weight: 500;
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
-      color: #f9fafb;
-    }
-
-        /* сюда добавить */
-    .primary-btn:active {
-      transform: translateY(1px);
-    }
-
-    .hint-text {
-      margin-top: 8px;
-      font-size: 12px;
-      color: #9ca3af;
-      line-height: 1.4;
-    }
-
-
-    /* ===== КАРТОЧКА-ССЫЛКА ДЛЯ РЕФЕРАЛКИ ===== */
-    .card-link {
-      padding: 0;
-    }
-
-
-    .card-link-inner {
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-        /* Более компактные ссылки только в разделе Ритуалы */
-    .ritual-card-link .card-link-inner {
-      padding-top: 8px;
-      padding-bottom: 8px;
-    }
-
-
-    .card-link-emoji {
-      font-size: 16px;
-    }
-
-
-    .card-link-text {
-      flex: 1;
-    }
-
-    .card-link-arrow {
-      font-size: 16px;
-      color: #9ca3af;
-    }
-
-    /* ===== РЕФЕРАЛЬНЫЙ ЭКРАН ===== */
+/* ===== БАЗОВЫЕ НАСТРОЙКИ ===== */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f1115;
+  color: #fff;
+}
+
+/* Тема по умолчанию — тёмная */
+body.theme-dark {
+  background: #0f1115;
+  color: #ffffff;
+}
+
+/* Светлая тема: фон и базовый цвет текста */
+body.theme-light {
+  background: #f3f4f6;
+  color: #020617;
+}
+
+/* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ В ШАПКЕ ===== */
+.theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 26px;
+  border-radius: 999px;
+  background: #020617;
+  border: 1px solid #374151;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  cursor: pointer;
+}
+
+.theme-icon {
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #f9fafb;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s ease-out;
+}
+
+/* Светлая тема: фон и бегунок переключателя */
+body.theme-light .theme-toggle {
+  background: #e5e7eb;
+  border-color: #cbd5f5;
+}
+
+body.theme-light .theme-toggle-thumb {
+  transform: translateX(24px);
+}
+
+/* Активная иконка темы */
+body.theme-dark .theme-icon-moon,
+body.theme-light .theme-icon-sun {
+  opacity: 1;
+}
+
+/* ===== ОБЩИЙ RESET ДЛЯ КНОПОК ===== */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  padding: 0;
+  background: none;
+  color: inherit;
+}
+
+/* Контейнер мини‑приложения */
+#app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px 16px 72px;
+  box-sizing: border-box;
+}
+
+/* ===== ШАПКА ПРОФИЛЯ ===== */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #262b35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.profile-username {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* Плашка текущего уровня рядом с именем */
+.tier-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #1f2937;
+}
+
+/* ===== ОБЩИЙ СТИЛЬ КАРТОЧЕК ===== */
+.card {
+  background: #111827;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 0;
+  color: #e5e7eb;
+}
+
+.card-row span:last-child {
+  color: #f9fafb;
+  font-weight: 500;
+}
+
+/* Краткий статус в блоке "Сводка" */
+#summary-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+/* Иконка уровня в "Сводке" */
+.summary-status-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Название уровня в "Сводке" */
+.summary-status-name {
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== НИЖНЕЕ МЕНЮ НАВИГАЦИИ ===== */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 8px 12px 12px;
+  display: flex;
+  gap: 8px;
+  background: #020617ee;
+  backdrop-filter: blur(10px);
+}
+
+/* Небольшой "бортик" под навигацией */
+.bottom-nav::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 8px;
+  background: #020617ee;
+}
+
+/* Кнопка вкладки */
+.nav-btn {
+  flex: 1;
+  border-radius: 999px;
+  border: none;
+  padding: 10px 0;
+  font-size: 13px;
+  color: #e5e7eb;
+  background: #111827;
+}
+
+/* Активная вкладка */
+.nav-btn-active {
+  background: #1d4ed8;
+  color: #f9fafb;
+  font-weight: 600;
+}
+
+/* ===== ОБЩИЕ БЛОКИ ТАРО / ГОРОСКОП / ПИЛЛЫ ===== */
+.tarot-section {
+  margin-top: 12px;
+}
+
+.tarot-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Маленькие серые подписи */
+.tarot-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 10px 0 4px;
+}
+
+/* Описание в шапках (гороскоп и пр.) */
+.horoscope-intro {
+  text-align: center;
+  line-height: 1.4;
+}
+
+.horoscope-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0 6px;
+}
+
+/* Сетка для знаков / сфер гороскопа */
+.horoscope-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px 8px;
+}
+
+/* Ряд "пиллов" (кнопок‑таблеток) */
+.pill-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+/* Базовый стиль пиллов */
+.pill-btn {
+  border-radius: 999px;
+  border: 1px solid #374151;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+/* Активный пилл */
+.pill-btn-active {
+  background: #1d4ed8;
+  border-color: #2563eb;
+  color: #f9fafb;
+}
+
+/* Компактные пиллы именно в сетке гороскопа */
+.horoscope-grid .pill-btn {
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+/* Все сферы гороскопа — фиксированная высота */
+.horoscope-scope-btn {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+/* Пустой пилл-заглушка */
+.pill-empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Основная фиолетовая кнопка */
+.primary-btn {
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 999px;
+  border: none;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #f9fafb;
+}
+
+/* Эффект нажатия для primary‑кнопок */
+.primary-btn:active {
+  transform: translateY(1px);
+}
+
+/* Серый подсказочный текст */
+.hint-text {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+/* ===== КАРТОЧКИ-ССЫЛКИ (РЕФЕРАЛКА, ПРОМОКОДЫ и т.п.) ===== */
+.card-link {
+  padding: 0;
+}
+
+.card-link-inner {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Более компактные ссылки только в разделе "Ритуалы" */
+.ritual-card-link .card-link-inner {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.card-link-emoji {
+  font-size: 16px;
+}
+
+.card-link-text {
+  flex: 1;
+}
+
+.card-link-arrow {
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+/* ===== РЕФЕРАЛЬНЫЙ ЭКРАН ===== */
 .ref-hero {
   text-align: center;
   margin-bottom: 16px;
 }
 
-
 .ref-emoji {
   font-size: 36px;
   margin-bottom: 8px;
 }
-
 
 .ref-title {
   font-size: 16px;
@@ -400,18 +389,16 @@
   margin-bottom: 6px;
 }
 
-
 .ref-subtitle {
   font-size: 13px;
   color: #d1d5db;
 }
 
-
 .ref-block {
   margin-top: 16px;
 }
 
-
+/* Мелкая серенькая подпись */
 .ref-label {
   font-size: 11px;
   font-weight: 600;
@@ -421,13 +408,13 @@
   margin-bottom: 6px;
 }
 
-
+/* Строка с реферальной ссылкой */
 .ref-link-row {
   display: flex;
   gap: 8px;
 }
 
-
+/* Поле с ссылкой */
 .ref-link-input {
   flex: 1;
   border-radius: 8px;
@@ -438,13 +425,12 @@
   padding: 8px 10px;
 }
 
-
 .ref-link-input:focus {
   outline: none;
   border-color: #4f46e5;
 }
 
-
+/* Кнопка "Копировать" ссылку */
 .ref-copy-btn {
   border-radius: 8px;
   border: none;
@@ -455,12 +441,11 @@
   cursor: pointer;
 }
 
-
 .ref-copy-btn:active {
   transform: translateY(1px);
 }
 
-
+/* Блок с количеством друзей */
 .ref-friends-box {
   border-radius: 8px;
   border: 1px solid #374151;
@@ -471,8 +456,7 @@
   min-height: 40px;
 }
 
-
-/* ===== ЭКРАН ПОДПИСКИ ===== */
+/* ===== ЭКРАН ПОКУПКИ СООБЩЕНИЙ ===== */
 .subs-hero {
   background: #111827;
   border-radius: 12px;
@@ -498,6 +482,7 @@
   line-height: 1.4;
 }
 
+/* Краткое описание секции */
 .section-intro {
   font-size: 13px;
   color: #d1d5db;
@@ -506,17 +491,19 @@
   margin-top: 4px;
 }
 
+/* Заголовок внутри карточки подписок */
 .subs-header-title {
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
+/* Карточка внутри экрана подписок */
 .subs-card {
   background: #111827;
   border-radius: 12px;
   padding: 10px 14px;
-  margin-bottom: 8px; /* маленький пробел между блоками */
+  margin-bottom: 8px;
 }
 
 /* Строки выбора количества сообщений */
@@ -535,6 +522,7 @@
   color: #e5e7eb;
 }
 
+/* Активный пакет сообщений */
 .subs-option-row-active {
   border-color: #4f46e5;
   box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.4);
@@ -546,42 +534,48 @@
   opacity: 0.98;
 }
 
+/* Левая часть строки тарифа */
 .subs-option-main {
   display: flex;
   flex-direction: column;
-  gap: 2px;        /* вместо 0 */
+  gap: 2px;
   text-align: left;
 }
 
+/* Правая часть (цена) */
 .subs-option-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: center;  /* вместо flex-start */
+  justify-content: center;
 }
 
+/* Название тарифа */
 .subs-option-title {
   font-weight: 500;
   color: #f9fafb;
-  line-height: 1.2;   /* добавим, чтобы текст не «плавал» */
+  line-height: 1.2;
 }
 
+/* Подпись "–3% скидка" */
 .subs-option-tag {
   font-size: 11px;
   color: #9ca3af;
 }
 
+/* Подпись скидки красным */
 .subs-option-tag-sale {
-  color: #f97373; /* скидка красным */
+  color: #f97373;
 }
 
+/* Цена пакета */
 .subs-option-price {
   font-weight: 600;
   color: #f9fafb;
   font-variant-numeric: tabular-nums;
 }
 
-/* Кнопки выбора метода оплаты */
+/* Строки выбора метода оплаты */
 .subs-pay-row {
   width: 100%;
   padding: 9px 12px;
@@ -590,12 +584,13 @@
   background: #020617;
   margin-top: 6px;
   font-size: 13px;
-  font-weight: 500;    /* добавить */
-  color: #f9fafb;      /* как у subs-option-title */
+  font-weight: 500;
+  color: #f9fafb;
   cursor: pointer;
   text-align: left;
 }
 
+/* Активный способ оплаты */
 .subs-pay-row-active {
   border-color: #4f46e5;
   box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.4);
@@ -628,7 +623,7 @@
   border-color: #4f46e5;
 }
 
-/* Сообщение о промокоде */
+/* Сообщение о результате проверки промокода */
 .subs-promo-message {
   margin-top: 6px;
   font-size: 12px;
@@ -645,7 +640,7 @@
   color: #ff6b6b;
 }
 
-/* Текст условий */
+/* Текст условий покупки */
 .subs-terms-text {
   margin: 8px 2px 4px;
   font-size: 11px;
@@ -654,7 +649,7 @@
   text-align: center;
 }
 
-/* Ссылка в тексте условий */
+/* Ссылка внутри условий */
 .link-inline {
   color: #60a5fa;
   text-decoration: underline;
@@ -665,6 +660,7 @@
   opacity: 0.8;
 }
 
+/* Общий стиль кнопок подписок (PRO / Mystic) */
 .subs-btn {
   width: 100%;
   border-radius: 999px;
@@ -675,19 +671,17 @@
   cursor: pointer;
 }
 
-
 .subs-btn-pro {
   background: #4f46e5;
   color: #f9fafb;
 }
-
 
 .subs-btn-mystic {
   background: linear-gradient(135deg, #7c3aed, #db2777);
   color: #f9fafb;
 }
 
-/* Эффект нажатия для кнопок PRO / Mystic */
+/* Эффект нажатия для PRO / Mystic */
 .subs-btn:active {
   transform: scale(0.98);
   opacity: 0.9;
@@ -699,7 +693,7 @@
 }
 
 .card-link-buy .card-link-inner {
-  background: linear-gradient(135deg, #059669, #22c55e); /* зелёный градиент */
+  background: linear-gradient(135deg, #059669, #22c55e);
   border-radius: 12px;
 }
 
@@ -772,21 +766,22 @@
   margin-bottom: 10px;
 }
 
-/* ДОБАВЬ СЮДА, сразу после .history-title */
+/* Мелкие тексты в заданиях 1 и 2 (карточки‑подсказки) */
 #task1-details .history-question,
 #task1-details .history-answer-preview,
 #task2-details .history-question,
 #task2-details .history-answer-preview {
-  font-size: 13px;          /* было 13/12 → делаем всё 13 */
+  font-size: 13px;
   line-height: 1.5;
 }
 
 #task1-details .tasks-note,
 #task2-details .tasks-note {
-  font-size: 12px;          /* было 11 */
+  font-size: 12px;
   line-height: 1.5;
 }
 
+/* Карточка истории */
 .history-item {
   background: #020617;
   border-radius: 10px;
@@ -795,20 +790,21 @@
   margin-bottom: 0;
 }
 
-/* в "Заданиях" кнопка занимает всю карточку */
+/* В "Заданиях" кнопка занимает всю карточку */
 .history-item .tasks-category-btn {
   display: block;
   width: 100%;
   text-align: left;
 }
 
-/* В "Заданиях" текст слева, стрелка справа — как в профиле */
+/* В "Заданиях" текст слева, стрелка справа */
 #tasks-categories .card-link-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* Строка "как пользоваться" и т.п. */
 .help-row {
   display: flex;
   align-items: center;
@@ -816,12 +812,11 @@
   gap: 8px;
 }
 
-
 .help-item .history-question {
   margin-bottom: 0;
 }
 
-
+/* Синяя кнопка "читать" в помощи */
 .help-read-btn {
   border: none;
   border-radius: 999px;
@@ -834,11 +829,11 @@
   white-space: nowrap;
 }
 
-
 .help-read-btn:active {
   transform: translateY(1px);
 }
 
+/* Кнопка копирования промокода */
 .promocode-copy-btn {
   min-width: 96px;
   text-align: center;
@@ -849,6 +844,7 @@
   opacity: 0.95;
 }
 
+/* Переключатель "Совет дня" */
 .switch {
   position: relative;
   display: inline-block;
@@ -856,13 +852,11 @@
   height: 22px;
 }
 
-
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 
 .slider {
   position: absolute;
@@ -872,7 +866,6 @@
   transition: .2s;
   border-radius: 999px;
 }
-
 
 .slider:before {
   position: absolute;
@@ -886,17 +879,15 @@
   border-radius: 50%;
 }
 
-
 .switch input:checked + .slider {
   background-color: #4ade80;
 }
-
 
 .switch input:checked + .slider:before {
   transform: translateX(18px);
 }
 
-
+/* Метаданные записи истории */
 .history-meta {
   display: flex;
   justify-content: space-between;
@@ -906,16 +897,15 @@
   margin-bottom: 4px;
 }
 
-
+/* Тип записи (Таро, Ритуал и т.п.) */
 .history-type {
   font-weight: 600;
 }
 
-
+/* Дата в истории */
 .history-date {
   font-variant-numeric: tabular-nums;
 }
-
 
 .history-question {
   font-size: 13px;
@@ -924,7 +914,6 @@
   color: #e5e7eb;
 }
 
-
 .history-answer-preview {
   font-size: 12px;
   color: #9ca3af;
@@ -932,7 +921,7 @@
   line-height: 1.4;
 }
 
-/* Строка с промокодом */
+/* Строка с промокодом (код + кнопка копировать) */
 .promocode-row {
   display: flex;
   justify-content: space-between;
@@ -941,14 +930,14 @@
   margin-top: 4px;
 }
 
-/* строка заголовка промокода */
+/* Строка заголовка промокода */
 .promocode-title-row {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-/* код промокода */
+/* Квадрат с кодом промокода */
 .promocode-code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 13px;
@@ -958,12 +947,13 @@
   border: 1px solid #374151;
 }
 
-/* срок действия */
+/* Общий текст "Действует до ..." */
 .promocode-expire {
   margin-top: 4px;
   font-size: 11px;
 }
 
+/* Градиентный текст для "полного" срока, если нужно подсветить отдельно */
 .promocode-expire-full {
   background: linear-gradient(135deg, #22c55e, #4ade80);
   -webkit-background-clip: text;
@@ -972,6 +962,7 @@
   letter-spacing: 0.02em;
 }
 
+/* Кнопка "Прочитать полностью" в истории */
 .history-read-btn {
   width: 100%;
   border: none;
@@ -983,7 +974,6 @@
   color: #f9fafb;
   cursor: pointer;
 }
-
 
 .history-read-btn:active {
   transform: translateY(1px);
@@ -1017,7 +1007,7 @@
 
 /* ===== ЗАДАНИЯ ===== */
 .tasks-hero {
-  text-align: center;           /* можно center, если хочешь как в гороскопе */
+  text-align: center;
 }
 
 .tasks-emoji {
@@ -1037,10 +1027,10 @@
   line-height: 1.4;
 }
 
+/* Отступы задач */
 .tasks-header {
   margin-bottom: 10px;
 }
-
 
 .tasks-header-title {
   font-size: 14px;
@@ -1048,7 +1038,7 @@
   margin-bottom: 4px;
 }
 
-
+/* Вступительный текст в списке задач */
 .tasks-intro {
   font-size: 13px;
   color: #e5e7eb;
@@ -1056,18 +1046,16 @@
   line-height: 1.4;
 }
 
-
-/* одинаковый отступ сверху для блока 2 и 3 */
+/* Карточка задания */
 .tasks-item {
   margin-top: 10px;
 }
-
 
 .tasks-item .history-question {
   margin-bottom: 6px;
 }
 
-
+/* Серый курсивный текст под задачей */
 .tasks-note {
   margin-top: 6px;
   font-size: 11px;
@@ -1075,6 +1063,7 @@
   color: #9ca3af;
 }
 
+/* Шапка "Сообщество и активность" и т.п. */
 .tasks-header-row {
   display: flex;
   justify-content: space-between;
@@ -1082,6 +1071,7 @@
   gap: 8px;
 }
 
+/* Оранжевый текст награды "+10 XP • 1 SMS" справа */
 .tasks-reward {
   font-size: 13px;
   color: #ffd68f;
@@ -1090,18 +1080,21 @@
 
 /* Акцент для чисел XP в прогрессе статуса */
 .xp-accent {
-  color: #ffd68f;       /* тот же цвет, что и в .tasks-reward */
+  color: #ffd68f;
   font-weight: 600;
 }
 
+/* Блок награды в карточке задания (тёмная тема) */
 .tasks-reward-block {
   margin-top: 8px;
   padding: 8px 10px;
   border-radius: 10px;
-  background: radial-gradient(circle at 0 0, rgba(96,165,250,0.15), transparent 55%),
-              #020617;
+  background:
+    radial-gradient(circle at 0 0, rgba(96,165,250,0.15), transparent 55%),
+    #020617;
 }
 
+/* Заголовок "НАГРАДА ЗА ВЫПОЛНЕНИЕ" */
 .tasks-reward-title {
   font-size: 12px;
   font-weight: 600;
@@ -1111,6 +1104,7 @@
   margin-bottom: 4px;
 }
 
+/* Список наград внутри блока */
 .tasks-reward-list {
   margin: 0;
   padding-left: 16px;
@@ -1119,6 +1113,7 @@
   list-style: none;
 }
 
+/* Маркер списка наград */
 .tasks-reward-list li::before {
   content: "•";
   color: #60a5fa;
@@ -1129,6 +1124,7 @@
   margin-bottom: 2px;
 }
 
+/* Строка "Прогресс: 1/3 выполнено" */
 .tasks-progress-line {
   margin-top: 6px;
   font-size: 12px;
@@ -1149,17 +1145,20 @@
   margin-bottom: 4px;
 }
 
+/* Заголовок "ПРОГРЕСС" */
 .tasks-progress-label {
   color: #9fb4ff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
+/* Число "1/3" справа */
 .tasks-progress-value {
   color: #ffffff;
   font-weight: 500;
 }
 
+/* Фон шкалы прогресса */
 .tasks-progress-bar {
   position: relative;
   height: 6px;
@@ -1168,6 +1167,7 @@
   overflow: hidden;
 }
 
+/* Заливка прогресса */
 .tasks-progress-bar-fill {
   height: 100%;
   border-radius: inherit;
@@ -1176,47 +1176,53 @@
   transition: width 0.25s ease-out;
 }
 
+/* Строка статусов "Награда получена / Не выполнено" */
 .tasks-status-row {
   display: flex;
   gap: 8px;
   margin-top: 10px;
 }
 
+/* Базовая плашка статуса */
 .tasks-status-btn {
   flex: 1;
   border: none;
   border-radius: 999px;
-  padding: 6px 6px;        /* было 6px 10px */
-  font-size: 11px;         /* было 12px */
+  padding: 6px 6px;
+  font-size: 11px;
   font-weight: 500;
   color: #ffffff;
   background: #333846;
   opacity: 0.35;
-  white-space: nowrap;     /* запрещаем перенос строки */
+  white-space: nowrap;
 }
 
+/* Зеленая плашка "Награда получена" */
 .tasks-status-done {
   background: linear-gradient(135deg, #1dd68f, #4be0c2);
 }
 
+/* Оранжевая/красная плашка "Не выполнено" */
 .tasks-status-pending {
   background: linear-gradient(135deg, #ff5f6d, #ff9966);
 }
 
+/* Активный статус (без полупрозрачности) */
 .tasks-status-active {
   opacity: 1;
 }
 
+/* Обертка для нижней кнопки задания */
 .tasks-claim-wrapper {
   margin-top: 8px;
 }
 
-
+/* Небольшой отступ в списке помощи */
 .help-intro {
-  margin-bottom: 12px; /* или 16px, как нравится */
+  margin-bottom: 12px;
 }
 
-
+/* Выбор времени в "Совете дня" */
 .ritual-time-option {
   cursor: pointer;
   display: flex;
@@ -1224,7 +1230,7 @@
   justify-content: space-between;
 }
 
-
+/* Галочка у выбранного времени */
 .ritual-time-option-selected .history-question::after {
   content: "✓";
   margin-left: 8px;
@@ -1232,35 +1238,32 @@
   font-weight: 600;
 }
 
-/* Шапка истории: центрируем иконку и текст */
+/* ===== ШАПКА ИСТОРИИ: ЦЕНТРИРОВКА ИКОНКИ ===== */
 .history-hero {
-  text-align: center;        /* если заголовок и текст должны быть как сейчас */
+  text-align: center;
   display: flex;
   flex-direction: column;
 }
 
 .history-hero .history-emoji {
-  margin: 0 auto 6px;      /* эмоджи по центру */
+  margin: 0 auto 6px;
 }
 
 .history-hero .history-title-main,
 .history-hero .history-subtitle {
-  text-align: center;        /* текст остаётся прижат к левому краю */
+  text-align: center;
 }
 
+/* Общий класс для больших иконок‑картинок */
 .section-icon {
-  width: 64px;         /* фактический размер в интерфейсе */
+  width: 64px;
   height: 64px;
-  object-fit: contain; /* чтобы не искажались */
+  object-fit: contain;
   display: block;
-  margin: 0 auto;      /* по центру */
+  margin: 0 auto;
 }
 
-.ref-bonus-wrap {
-  margin: 12px 0;      /* отступы как у карточек */
-  cursor: pointer;
-}
-
+/* Обёртка под баннер реферального бонуса */
 .ref-bonus-wrap {
   margin: 12px 0;
   cursor: pointer;
@@ -1272,6 +1275,7 @@
   opacity: 0.95;
 }
 
+/* Баннер реферального бонуса */
 .ref-bonus-img {
   width: 100%;
   display: block;
@@ -1284,41 +1288,46 @@
   margin-bottom: 10px;
 }
 
-/* подсветка иконки и названия уровня в шапке */
+/* Подсветка иконки статуса */
 .status-hero img#status-hero-icon {
   filter: drop-shadow(0 0 8px rgba(250, 250, 255, 0.35));
 }
 
+/* Название статуса крупнее и со свечением */
 #status-hero-title {
   font-size: 18px;
   font-weight: 700;
   text-shadow: 0 0 10px rgba(250, 250, 255, 0.4);
 }
 
-/* Универсальная подсветка для шапок разделов */
+/* Универсальная подсветка для иконок в шапках */
 .section-hero-icon-glow {
   filter: drop-shadow(0 0 8px rgba(250, 250, 255, 0.35));
 }
 
+/* Универсальная подсветка заголовка в шапках */
 .section-hero-title-glow {
   text-shadow: 0 0 10px rgba(250, 250, 255, 0.4);
 }
 
+/* Внутренняя карточка прогресса */
 .status-progress-card-inner {
   background: #020617;
   border-radius: 10px;
   padding: 6px 10px;
 }
 
+/* Верхняя строка "Сейчас: ..." */
 #status-current-line {
   margin-bottom: 4px;
 }
 
+/* Нижняя строка "Осталось N XP..." */
 #status-progress-text {
   margin-top: 2px;
 }
 
-/* шкала с белыми делениями и обводкой */
+/* Шкала прогресса с белыми делениями */
 .status-progress-bar {
   width: 100%;
   height: 12px;
@@ -1336,7 +1345,7 @@
   margin: 6px 0 4px;
 }
 
-/* заполнение */
+/* Заливка прогресса статуса (тёмная тема) */
 .status-progress-fill {
   height: 100%;
   width: 0%;
@@ -1376,24 +1385,30 @@
   max-width: 40%;
 }
 
+/* Текущий уровень */
 .status-badge-current {
   box-shadow: 0 0 0 2px rgba(248, 250, 252, 0.7);
 }
 
+/* Следующий уровень */
 .status-badge-next {
   box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.8);
 }
 
+/* Заблокированные уровни */
 .status-badge-locked {
   opacity: 0.7;
 }
 
-/* ===== Светлая тема: карточки и текст ===== */
+/* ===== СВЕТЛАЯ ТЕМА: КАРТОЧКИ И ТЕКСТ ===== */
+
+/* Светлая тема: фон карточек */
 body.theme-light .card {
   background: #ffffff;
   color: #020617;
 }
 
+/* Светлая тема: строки "ключ‑значение" */
 body.theme-light .card-row {
   color: #4b5563;
 }
@@ -1402,20 +1417,24 @@ body.theme-light .card-row span:last-child {
   color: #111827;
 }
 
+/* Светлая тема: серые карточки истории */
 body.theme-light .history-item {
   background: #f3f4f6;
+  border: 1px solid #e5e7eb;
 }
 
+/* Светлая тема: подписочные карточки */
 body.theme-light .subs-hero,
 body.theme-light .subs-card {
   background: #ffffff;
 }
 
+/* Светлая тема: вводное описание */
 body.theme-light .section-intro {
   color: #6b7280;
 }
 
-/* ===== Светлая тема: нижнее меню ===== */
+/* ===== СВЕТЛАЯ ТЕМА: НИЖНЕЕ МЕНЮ ===== */
 body.theme-light .bottom-nav {
   background: #ffffffee;
 }
@@ -1434,7 +1453,9 @@ body.theme-light .nav-btn-active {
   color: #f9fafb;
 }
 
-/* ===== Светлая тема: пиллы и поля ===== */
+/* ===== СВЕТЛАЯ ТЕМА: ПИЛЛЫ И ПОЛЯ ===== */
+
+/* Светлая тема: пиллы */
 body.theme-light .pill-btn {
   background: #f3f4f6;
   border-color: #d1d5db;
@@ -1447,6 +1468,7 @@ body.theme-light .pill-btn-active {
   color: #f9fafb;
 }
 
+/* Светлая тема: поля ввода и серые боксы */
 body.theme-light .subs-option-row,
 body.theme-light .subs-pay-row,
 body.theme-light .ref-link-input,
@@ -1457,7 +1479,7 @@ body.theme-light .subs-email-input {
   color: #111827;
 }
 
-/* Светлая тема: базовый текст в карточках */
+/* Светлая тема: базовый тёмный текст */
 body.theme-light .history-question,
 body.theme-light .card-title,
 body.theme-light .tasks-title,
@@ -1465,6 +1487,7 @@ body.theme-light .history-title-main {
   color: #111827;
 }
 
+/* Светлая тема: серые подзаголовки */
 body.theme-light .history-answer-preview,
 body.theme-light .tasks-subtitle,
 body.theme-light .subs-subtitle,
@@ -1473,20 +1496,14 @@ body.theme-light .hint-text {
   color: #4b5563;
 }
 
-/* Подписи-заглушки (серые строки "Как это работает", неактивные задания и т.п.) */
+/* Светлая тема: "глушённые" строки */
 body.theme-light .history-item,
 body.theme-light .tasks-item,
 body.theme-light .promocode-row {
   color: #4b5563;
 }
 
-/* Светлая тема: серые карточки-инфо, но читаемые */
-body.theme-light .history-item {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-}
-
-/* Неактивные задания / отключённые опции — чуть темнее плейсхолдера */
+/* Неактивные задания / опции */
 body.theme-light .tasks-item.disabled,
 body.theme-light .ritual-time-option:not(.ritual-time-option-selected),
 body.theme-light .subs-option-row:not(.subs-option-row-active),
@@ -1494,30 +1511,12 @@ body.theme-light .subs-pay-row:not(.subs-pay-row-active) {
   color: #9ca3af;
 }
 
-/* Заголовки внутри "Совет дня" и времени, чтобы не терялись */
+/* Светлая тема: заголовок "Совет дня" в выборе времени */
 body.theme-light .ritual-time-option .history-question {
   color: #111827;
 }
 
-/* Светлая тема: ссылки-строки ("Отзывы", "Новости", категории заданий) */
-body.theme-light .card-link-inner {
-  background: #ffffff;
-  border-radius: 999px;
-}
-
-body.theme-light .card-link {
-  background: transparent;
-}
-
-body.theme-light .card-link-text {
-  color: #111827;
-}
-
-body.theme-light .card-link-arrow {
-  color: #9ca3af;
-}
-
-/* Светлая тема: ссылки-строки ("Отзывы", "Новости", категории заданий) */
+/* Светлая тема: строки‑ссылки ("Отзывы", "Новости" и т.п.) */
 body.theme-light .card-link-inner {
   background: #ffffff;
   border-radius: 999px;
@@ -1542,80 +1541,40 @@ body.theme-light .promocode-code {
   color: #f9fafb;
 }
 
-/* Светлая тема: числовая награда справа в списке */
+/* Светлая тема: числовая награда справа в задачах */
 body.theme-light .tasks-reward {
   color: #f97316;
 }
 
-/* Светлая тема: блок награды и прогресса в заданиях */
+/* Светлая тема: блок награды за выполнение */
 body.theme-light .tasks-reward-block {
-  background: #e5e7eb;   /* светло‑серый */
+  background: #e5e7eb;
   color: #111827;
 }
 
+/* Светлая тема: заголовок "НАГРАДА ЗА ВЫПОЛНЕНИЕ" */
 body.theme-light .tasks-reward-title {
-  color: #bfdbfe;
-}
-
-body.theme-light .tasks-reward-list {
-  color: #e5e7eb;
-}
-
-body.theme-light .tasks-progress-line,
-body.theme-light .tasks-progress-label,
-body.theme-light .tasks-progress-value {
   color: #4b5563;
 }
 
-/* Светлая тема: бейджи типов в истории */
+/* Светлая тема: текст наград внутри блока */
+body.theme-light .tasks-reward-list {
+  color: #111827;
+}
+
+/* Светлая тема: надписи типов в истории */
 body.theme-light .history-type {
   color: #111827;
 }
 
+/* Если используешь отдельную плашку для типа */
 body.theme-light .history-type-badge {
-  /* если у тебя есть отдельный класс для плашки, можно так;
-     если нет — можно повесить на контейнер с иконкой/текстом */
   background: #e5e7eb;
   border-radius: 999px;
   padding: 2px 8px;
 }
 
-/* Светлая тема: карточка текущего статуса */
-body.theme-light .status-progress-card-inner {
-  background: #111827;
-  color: #f9fafb;
-}
-
-/* шкала внутри можно чуть высветлить деления */
-body.theme-light .status-progress-bar {
-  border-color: #6366f1;
-}
-
 /* Светлая тема: строки вариантов сообщений и оплаты */
-body.theme-light .subs-option-row,
-body.theme-light .subs-pay-row {
-  background: #ffffff;
-  border-color: #e5e7eb;
-  color: #111827;
-}
-
-/* активные состояния оставляем яркими */
-body.theme-light .subs-option-row-active,
-body.theme-light .subs-pay-row-active {
-  background: #eef2ff;
-  border-color: #4f46e5;
-}
-
-/* Заголовок и текст внутри */
-body.theme-light .tasks-reward-title {
-  color: #bfdbfe;
-}
-
-body.theme-light .tasks-reward-list {
-  color: #e5e7eb;
-}
-
-/* Светлая тема: строки вариантов и оплаты */
 body.theme-light .subs-option-row,
 body.theme-light .subs-pay-row {
   background: #ffffff;
@@ -1630,49 +1589,30 @@ body.theme-light .subs-pay-row-active {
   border-color: #4f46e5;
 }
 
-/* Текст "–3% скидка" и др. — насыщенный красный */
+/* Текст скидки — насыщенный красный */
 body.theme-light .subs-option-tag-sale {
   color: #dc2626;
 }
 
-/* Число сообщений и цена, чтобы были видны */
+/* Число сообщений и цена — тёмные */
 body.theme-light .subs-option-title,
 body.theme-light .subs-option-price {
   color: #111827;
 }
 
-/* Светлая тема: прогресс статуса */
-body.theme-light .status-progress-card-inner {
-  background: #0f172a;      /* насыщенный тёмный */
-  color: #f9fafb;
-}
-
-body.theme-light #status-current-line,
-body.theme-light #status-progress-text {
-  color: #f9fafb;
-}
-
-body.theme-light .status-progress-bar {
-  border-color: #6366f1;
-}
-
-body.theme-light .status-progress-fill {
-  background: linear-gradient(135deg, #6366f1, #a855f7);
-}
-
 /* Светлая тема: карточка прогресса статуса */
 body.theme-light .status-progress-card-inner {
-  background: #0f172a;      /* насыщенный тёмный */
+  background: #0f172a;
   color: #f9fafb;
 }
 
-/* Текст внутри блока */
+/* Светлая тема: текст внутри блока прогресса статуса */
 body.theme-light #status-current-line,
 body.theme-light #status-progress-text {
   color: #f9fafb;
 }
 
-/* Шкала и заливка */
+/* Светлая тема: шкала и заливка статуса */
 body.theme-light .status-progress-bar {
   border-color: #6366f1;
 }
@@ -1681,22 +1621,14 @@ body.theme-light .status-progress-fill {
   background: linear-gradient(135deg, #6366f1, #a855f7);
 }
 
-body.theme-light .tasks-reward-title {
-  color: #bfdbfe;
-}
-
-body.theme-light .tasks-reward-list {
-  color: #e5e7eb;
-}
-
-/* Подписи ПРОГРЕСС и счётчик справа */
+/* Светлая тема: подписи "ПРОГРЕСС" и счётчик */
 body.theme-light .tasks-progress-line,
 body.theme-light .tasks-progress-label,
 body.theme-light .tasks-progress-value {
   color: #4b5563;
 }
 
-/* Светлая тема: срок действия промокода */
+/* Светлая тема: срок действия промокода (обычный зелёный текст) */
 body.theme-light .promocode-expire {
   color: #047857;
   font-weight: 500;
