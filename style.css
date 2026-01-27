@@ -722,6 +722,13 @@
   margin-bottom: 0;
 }
 
+/* в "Заданиях" кнопка занимает всю карточку */
+.history-item .tasks-category-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
 .help-row {
   display: flex;
   align-items: center;
