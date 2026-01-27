@@ -1534,3 +1534,68 @@ body.theme-light .card-link-text {
 body.theme-light .card-link-arrow {
   color: #9ca3af;
 }
+
+/* Светлая тема: код промокода */
+body.theme-light .promocode-code {
+  background: #111827;
+  border-color: #111827;
+  color: #f9fafb;
+}
+
+/* Светлая тема: числовая награда справа в списке */
+body.theme-light .tasks-reward {
+  color: #f97316;
+}
+
+/* Светлая тема: карточка "Награда за выполнение" */
+body.theme-light .tasks-reward-block {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+body.theme-light .tasks-reward-title {
+  color: #bfdbfe;
+}
+
+body.theme-light .tasks-reward-list {
+  color: #e5e7eb;
+}
+
+/* Светлая тема: бейджи типов в истории */
+body.theme-light .history-type {
+  color: #111827;
+}
+
+body.theme-light .history-type-badge {
+  /* если у тебя есть отдельный класс для плашки, можно так;
+     если нет — можно повесить на контейнер с иконкой/текстом */
+  background: #e5e7eb;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+/* Светлая тема: карточка текущего статуса */
+body.theme-light .status-progress-card-inner {
+  background: #111827;
+  color: #f9fafb;
+}
+
+/* шкала внутри можно чуть высветлить деления */
+body.theme-light .status-progress-bar {
+  border-color: #6366f1;
+}
+
+/* Светлая тема: строки вариантов сообщений и оплаты */
+body.theme-light .subs-option-row,
+body.theme-light .subs-pay-row {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #111827;
+}
+
+/* активные состояния оставляем яркими */
+body.theme-light .subs-option-row-active,
+body.theme-light .subs-pay-row-active {
+  background: #eef2ff;
+  border-color: #4f46e5;
+}
