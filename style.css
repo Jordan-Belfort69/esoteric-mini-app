@@ -727,6 +727,13 @@
   text-align: left;
 }
 
+/* В "Заданиях" текст слева, стрелка справа — как в профиле */
+#tasks-categories .card-link-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .help-row {
   display: flex;
   align-items: center;
