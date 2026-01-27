@@ -1111,12 +1111,13 @@
   flex: 1;
   border: none;
   border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 12px;
+  padding: 6px 6px;        /* было 6px 10px */
+  font-size: 11px;         /* было 12px */
   font-weight: 500;
   color: #ffffff;
   background: #333846;
   opacity: 0.35;
+  white-space: nowrap;     /* запрещаем перенос строки */
 }
 
 .tasks-status-done {
