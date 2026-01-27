@@ -56,6 +56,13 @@ window.AppTasks = (() => {
               ${task.promo ? `<li>🎁 Промокод на скидку ${task.promo}</li>` : ''}
             </ul>
           </div>
+          ${
+            typeof task.progress_target === 'number' && task.progress_target > 1
+              ? `<div class="tasks-progress-line">
+                   Прогресс: ${task.progress_current || 0} / ${task.progress_target}
+                 </div>`
+              : ''
+          }
           <div class="tasks-note">
             Награда будет начислена автоматически после выполнения условий.
           </div>

@@ -53,6 +53,8 @@ window.AppTasksConfig = {
       promo: '5%',
       check_type: 'auto',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 7,
     },
     {
       code: 'D_4',
@@ -63,6 +65,10 @@ window.AppTasksConfig = {
       promo: '10%',
       check_type: 'auto',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 14,
+      progress_current: 0,
+      progress_target: 14,
     },
     {
       code: 'D_5',
@@ -73,6 +79,8 @@ window.AppTasksConfig = {
       promo: '15%',
       check_type: 'auto',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 30,
     },
   ],
 
@@ -86,6 +94,8 @@ window.AppTasksConfig = {
       promo: '5%',
       check_type: 'auto_ref',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 3,
     },
     {
       code: 'REF_2',
@@ -96,6 +106,8 @@ window.AppTasksConfig = {
       promo: '10%',
       check_type: 'auto_ref',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 7,
     },
     {
       code: 'REF_3',
@@ -106,6 +118,8 @@ window.AppTasksConfig = {
       promo: '20%',
       check_type: 'auto_ref',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 15,
     },
     {
       code: 'REF_4',
@@ -116,6 +130,8 @@ window.AppTasksConfig = {
       promo: '25%',
       check_type: 'auto_ref',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 30,
     },
     {
       code: 'REF_5',
@@ -126,6 +142,8 @@ window.AppTasksConfig = {
       promo: '30%',
       check_type: 'auto_ref',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 100,
     },
   ],
 
@@ -139,6 +157,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_usage',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 30,
     },
     {
       code: 'USE_2',
@@ -149,6 +169,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_usage',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 50,
     },
     {
       code: 'USE_3',
@@ -159,6 +181,8 @@ window.AppTasksConfig = {
       promo: '5%',
       check_type: 'auto_usage',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 100,
     },
     {
       code: 'USE_4',
@@ -169,6 +193,8 @@ window.AppTasksConfig = {
       promo: '10%',
       check_type: 'auto_usage',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 300,
     },
     {
       code: 'USE_5',
@@ -179,6 +205,8 @@ window.AppTasksConfig = {
       promo: '25%',
       check_type: 'auto_usage',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 1000,
     },
   ],
 
@@ -202,6 +230,8 @@ window.AppTasksConfig = {
       promo: '5%',
       check_type: 'auto_buy',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 100,
     },
     {
       code: 'BUY_2',
@@ -212,6 +242,8 @@ window.AppTasksConfig = {
       promo: '10%',
       check_type: 'auto_buy',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 300,
     },
     {
       code: 'BUY_3',
@@ -222,6 +254,8 @@ window.AppTasksConfig = {
       promo: '20%',
       check_type: 'auto_buy',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 800,
     },
     {
       code: 'BUY_4',
@@ -232,6 +266,8 @@ window.AppTasksConfig = {
       promo: '25%',
       check_type: 'auto_buy',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 1500,
     },
     {
       code: 'BUY_5',
@@ -242,6 +278,8 @@ window.AppTasksConfig = {
       promo: '30%',
       check_type: 'auto_buy',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 3000,
     },
   ],
 
@@ -255,6 +293,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_level',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 100,
     },
     {
       code: 'LEVEL_UP_2',
@@ -265,6 +305,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_level',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 300,
     },
     {
       code: 'LEVEL_UP_3',
@@ -275,6 +317,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_level',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 700,
     },
     {
       code: 'LEVEL_UP_4',
@@ -285,6 +329,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_level',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 1200,
     },
     {
       code: 'LEVEL_UP_5',
@@ -295,6 +341,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_level',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 2000,
     },
     {
       code: 'LEVEL_UP_6',
@@ -305,6 +353,8 @@ window.AppTasksConfig = {
       promo: null,
       check_type: 'auto_level',
       status: 'pending',
+      progress_current: 0,
+      progress_target: 3000,
     },
   ],
 };
