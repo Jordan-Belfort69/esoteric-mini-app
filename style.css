@@ -19,7 +19,7 @@
     #app {
       max-width: 480px;
       margin: 0 auto;
-      padding: 16px 16px calc(80px + env(safe-area-inset-bottom, 0px));
+      padding: 16px 16px 88px;  /* было 72px */
       box-sizing: border-box;
     }
 
@@ -130,7 +130,7 @@
       position: fixed;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom: 8px;
       max-width: 480px;
       margin: 0 auto;
       /* Чуть больше воздуха + safe-area для iPhone */
