@@ -1547,9 +1547,9 @@ body.theme-light .tasks-reward {
   color: #f97316;
 }
 
-/* Светлая тема: карточка "Награда за выполнение" */
+/* Светлая тема: блок награды и прогресса в заданиях */
 body.theme-light .tasks-reward-block {
-  background: #111827;
+  background: #0f172a;
   color: #e5e7eb;
 }
 
@@ -1559,6 +1559,12 @@ body.theme-light .tasks-reward-title {
 
 body.theme-light .tasks-reward-list {
   color: #e5e7eb;
+}
+
+body.theme-light .tasks-progress-line,
+body.theme-light .tasks-progress-label,
+body.theme-light .tasks-progress-value {
+  color: #4b5563;
 }
 
 /* Светлая тема: бейджи типов в истории */
@@ -1602,7 +1608,8 @@ body.theme-light .subs-pay-row-active {
 
 /* Светлая тема: срок действия промокода */
 body.theme-light .promocode-expire {
-  color: #059669;
+  color: #047857;
+  font-weight: 500;
 }
 
 /* Светлая тема: карточка награды */
@@ -1645,3 +1652,23 @@ body.theme-light .subs-option-title,
 body.theme-light .subs-option-price {
   color: #111827;
 }
+
+/* Светлая тема: прогресс статуса */
+body.theme-light .status-progress-card-inner {
+  background: #0f172a;      /* насыщенный тёмный */
+  color: #f9fafb;
+}
+
+body.theme-light #status-current-line,
+body.theme-light #status-progress-text {
+  color: #f9fafb;
+}
+
+body.theme-light .status-progress-bar {
+  border-color: #6366f1;
+}
+
+body.theme-light .status-progress-fill {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+}
+
