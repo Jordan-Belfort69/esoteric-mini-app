@@ -727,21 +727,6 @@
   text-align: left;
 }
 
-/* В "Заданиях" стрелка уезжает в правый край */
-.history-item .tasks-category-btn .card-link-inner {
-  display: flex;
-  align-items: center;
-}
-
-.history-item .tasks-category-btn .card-link-text {
-  margin-left: 8px;
-  margin-right: auto;   /* толкаем стрелку вправо */
-}
-
-.history-item .tasks-category-btn .card-link-arrow {
-  padding-left: 8px;    /* небольшая зона вокруг стрелки */
-}
-
 .help-row {
   display: flex;
   align-items: center;
