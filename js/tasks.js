@@ -10,7 +10,7 @@ window.AppTasks = (() => {
       btn.addEventListener('click', () => {
         const category = btn.getAttribute('data-category');
         renderTasksList(category);
-        AppRouter.go('tasks-list'); // вместо ручного display
+        AppRouter.go('tasks-list'); // переход в экран списка задач
       });
     });
   }
