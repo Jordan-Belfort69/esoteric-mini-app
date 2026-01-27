@@ -196,6 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // стартуем с профиля
   AppRouter.apply();
 
+  AppTheme.initThemeToggle();
   AppProfile.loadProfile();
   AppNavigation.initTabs();
   AppTarot.initTarotControls();
