@@ -282,8 +282,8 @@
       align-items: center;
       gap: 8px;
       font-size: 13px;
+      cursor: pointer;
     }
-
 
         /* Более компактные ссылки только в разделе Ритуалы */
     .ritual-card-link .card-link-inner {
@@ -720,16 +720,6 @@
   padding: 10px 12px;
   margin-top: 10px;
   margin-bottom: 0;
-}
-
-/* кнопки категорий в "Заданиях" — как карточки по всей ширине */
-.tasks-category-btn {
-  display: block;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  background: none;
-  border: none;
 }
 
 .help-row {
