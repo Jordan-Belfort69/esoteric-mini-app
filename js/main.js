@@ -31,7 +31,7 @@ const AppRouter = {
     }
 
     // Остальные внутренние → на корневой экран
-    if (["buy","buy-confirm","history","tasks","referral","status"].includes(cur)) {
+    if (["buy","buy-confirm","history","tasks","referral","status","promocodes"].includes(cur)) {
       this.stack = ["profile"];
     } else if (["tip","horoscope"].includes(cur)) {
       this.stack = ["rituals"];
@@ -58,7 +58,7 @@ const AppRouter = {
     }
 
     // 1) переключаем основной таб
-    if (["profile","buy","buy-confirm","history","tasks","tasks-list","referral","status"].includes(screen)) {
+    if (["profile","buy","buy-confirm","history","tasks","tasks-list","referral","status","promocodes"].includes(screen)) {
       AppNavigation.switchTab("profile", screen === "profile" ? "main" : "subscreen");
     } else if (screen === "tarot" || screen === "tarot-inner") {
       // для внутренних экранов Таро всё равно держим вкладку "Таро" активной
@@ -78,6 +78,7 @@ const AppRouter = {
       "profile-ref",
       "profile-help",
       "profile-help-contact",
+      "promocodes-section",
     ];
     profileInnerIds.forEach(id => {
       const el = document.getElementById(id);
@@ -120,6 +121,9 @@ const AppRouter = {
     } else if (screen === "referral") {
       const r = document.getElementById("profile-ref");
       if (r) r.style.display = "block";
+    } else if (screen === "promocodes") {
+      const p = document.getElementById("promocodes-section");
+      if (p) p.style.display = "block";  
     } else if (screen === "help") {
       const h = document.getElementById("profile-help");
       const c = document.getElementById("profile-help-contact");
@@ -207,4 +211,5 @@ document.addEventListener("DOMContentLoaded", () => {
   AppHoroscope.initHoroscope();
   StatusUI.initStatusScreen();
   AppTasks.initTasksUI();
+  PromoUI.initPromoScreen();
 });
