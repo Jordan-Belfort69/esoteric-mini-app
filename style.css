@@ -1456,3 +1456,81 @@ body.theme-light .subs-email-input {
   border-color: #e5e7eb;
   color: #111827;
 }
+
+/* Светлая тема: базовый текст в карточках */
+body.theme-light .history-question,
+body.theme-light .card-title,
+body.theme-light .tasks-title,
+body.theme-light .history-title-main {
+  color: #111827;
+}
+
+body.theme-light .history-answer-preview,
+body.theme-light .tasks-subtitle,
+body.theme-light .subs-subtitle,
+body.theme-light .section-intro,
+body.theme-light .hint-text {
+  color: #4b5563;
+}
+
+/* Подписи-заглушки (серые строки "Как это работает", неактивные задания и т.п.) */
+body.theme-light .history-item,
+body.theme-light .tasks-item,
+body.theme-light .promocode-row {
+  color: #4b5563;
+}
+
+/* Светлая тема: серые карточки-инфо, но читаемые */
+body.theme-light .history-item {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+/* Неактивные задания / отключённые опции — чуть темнее плейсхолдера */
+body.theme-light .tasks-item.disabled,
+body.theme-light .ritual-time-option:not(.ritual-time-option-selected),
+body.theme-light .subs-option-row:not(.subs-option-row-active),
+body.theme-light .subs-pay-row:not(.subs-pay-row-active) {
+  color: #9ca3af;
+}
+
+/* Заголовки внутри "Совет дня" и времени, чтобы не терялись */
+body.theme-light .ritual-time-option .history-question {
+  color: #111827;
+}
+
+/* Светлая тема: ссылки-строки ("Отзывы", "Новости", категории заданий) */
+body.theme-light .card-link-inner {
+  background: #ffffff;
+  border-radius: 999px;
+}
+
+body.theme-light .card-link {
+  background: transparent;
+}
+
+body.theme-light .card-link-text {
+  color: #111827;
+}
+
+body.theme-light .card-link-arrow {
+  color: #9ca3af;
+}
+
+/* Светлая тема: ссылки-строки ("Отзывы", "Новости", категории заданий) */
+body.theme-light .card-link-inner {
+  background: #ffffff;
+  border-radius: 999px;
+}
+
+body.theme-light .card-link {
+  background: transparent;
+}
+
+body.theme-light .card-link-text {
+  color: #111827;
+}
+
+body.theme-light .card-link-arrow {
+  color: #9ca3af;
+}
