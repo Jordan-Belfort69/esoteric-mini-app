@@ -19,7 +19,7 @@
     #app {
       max-width: 480px;
       margin: 0 auto;
-      padding: 16px 16px 88px;  /* было 72px */
+      padding: 16px 16px 96px;   /* было 72px или 88px, ставим 96px */
       box-sizing: border-box;
     }
 
@@ -130,15 +130,15 @@
       position: fixed;
       left: 0;
       right: 0;
-      bottom: 14px;
+      bottom: 10px;                 /* меню чуть над свайпом */
       max-width: 480px;
       margin: 0 auto;
-      padding: 8px 12px 18px;
+      padding: 8px 12px 14px;
       display: flex;
       gap: 8px;
       background: #020617ee;
       backdrop-filter: blur(10px);
-      position: relative;           /* нужно для ::before */
+      position: relative;
     }
 
     .bottom-nav::before {
@@ -146,8 +146,8 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -14px;   /* столько же, сколько bottom у .bottom-nav */
-      height: 14px;
+      bottom: -10px;                /* совпадает с bottom */
+      height: 10px;
       background: #020617ee;
     }
 
