@@ -282,7 +282,6 @@
       align-items: center;
       gap: 8px;
       font-size: 13px;
-      cursor: pointer;
     }
 
 
@@ -723,6 +722,15 @@
   margin-bottom: 0;
 }
 
+/* кнопки категорий в "Заданиях" — как карточки по всей ширине */
+.tasks-category-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
 
 .help-row {
   display: flex;
