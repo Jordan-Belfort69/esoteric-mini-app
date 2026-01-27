@@ -12,8 +12,10 @@ window.AppProfile = (() => {
       document.getElementById("user-username").textContent = data.username || "@username";
 
       // ===== Сводка =====
-      document.getElementById("summary-status").textContent =
-        data.status_title || "Новичок";
+      const summaryStatusName = document.querySelector('#summary-status .summary-status-name');
+      if (summaryStatusName) {
+        summaryStatusName.textContent = data.status_title || 'Новичок';
+      }
 
       document.getElementById("summary-balance").textContent =
         (data.credits_balance ?? "—") + "";
@@ -67,6 +69,22 @@ window.AppProfile = (() => {
     });
   }
 
+  function initStatusLink() {
+    const statusLinkCard = document.getElementById('profile-status-link');
+    const summaryStatusBtn = document.getElementById('summary-status');
+
+    function openStatusProgress() {
+      AppRouter.go('status'); // тот же роут, что и для карточки «Прогресс статуса»
+    }
+
+    if (statusLinkCard) {
+      statusLinkCard.addEventListener('click', openStatusProgress);
+    }
+    if (summaryStatusBtn) {
+      summaryStatusBtn.addEventListener('click', openStatusProgress);
+    }
+  }
+
   function initRefLinkSection() {
     const refLink = document.getElementById('profile-ref-link');
     const refScreen = document.getElementById('profile-ref');
@@ -95,5 +113,6 @@ window.AppProfile = (() => {
     initTasksSection,
     initRefBonusBlock,
     initRefLinkSection,
+    initStatusLink,
   };
 })();

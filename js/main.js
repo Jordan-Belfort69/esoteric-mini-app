@@ -206,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
   AppProfile.initTasksSection();
   AppProfile.initRefLinkSection();
   AppProfile.initRefBonusBlock();
+  AppProfile.initStatusLink();
   AppMore.initMore();
   AppRitualTip.initRitualTip();
   AppHoroscope.initHoroscope();
