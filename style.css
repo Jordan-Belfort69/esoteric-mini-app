@@ -140,6 +140,16 @@
       backdrop-filter: blur(10px);
     }
 
+    .bottom-nav::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;             /* ровно столько же, сколько bottom */
+      height: 6px;
+      background: #020617ee;
+    }
+
 
     .nav-btn {
       flex: 1;
